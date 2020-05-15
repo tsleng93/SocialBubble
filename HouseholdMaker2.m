@@ -10,6 +10,12 @@ if nargin == 0
     SizeBubble = 2;
 end
 
+%Always make NumHouse/SizeBubble an integer
+if mod(NumHouse, SizeBubble) ~= 0
+    NumHouse = NumHouse + mod(NumHouse, SizeBubble);
+end
+
+
 M = [];
 B = [];
 ProbHouse = cumsum(ProbHouse);
