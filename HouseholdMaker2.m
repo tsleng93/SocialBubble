@@ -25,7 +25,8 @@ Bubbleadd = zeros(1,SizeBubble);
 %%%This makes bubbles of SizeBubble households
 for i  = 1:NumHouse
     r = rand;
-    for j = 1:length(ProbHouse)        
+    for j = 1:length(ProbHouse)
+        %Determining house size
         if r < ProbHouse(j)    
             M = blkdiag(M,sparse(ones(SizeHouse(j))));
             Bubbleadd(mod(i,SizeBubble)+1) = SizeHouse(j); 
