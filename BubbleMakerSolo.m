@@ -8,19 +8,31 @@ function B = BubbleMakerSolo(M, maxnum)
 B = sparse(zeros(length(M)));
 
 for j = 1:length(M)
-    
-    if sum(M(j,:)) <= maxnum & sum(B(j,:)) == 0
+    %Finding a household that has a size equal to or less than maxnum and
+    %is not already connected
+    if sum(M(j,:)) <= maxnum && sum(B(j,:)) == 0
+       %indexing all people in the house that are going to be connected to 
+       House_to_Connect = find(M(j,:));
        k = 1;
        while k > 0 
+           %finding another household to bubble person with
            r = randi(length(M));
+           
+           %indexing all people in that household
            Newpartners = find(M(r,:));
-           if  sum(B(r,:)) == 0
-               B(j, Newpartners) = 1;
-               B(Newpartners,j) = 1;
+           
+           
+           
+           %Checking this household has not be bubbled with already and
+           %that it is not bubbling with its own household.
+           if  sum(B(r,:)) == 0 && Newpartners(1) ~= House_to_Connect(1)
+               %forming new contacts
+               %B(j, Newpartners) = 1;
+               %B(Newpartners,j) = 1;
+               B(House_to_Connect, Newpartners) = 1;
+               B(Newpartners, House_to_Connect) = 1;
                k = 0;
            end
        end
     end
-    
-    
 end
