@@ -1,5 +1,7 @@
 function B = BubbleMakerSolo(M, maxnum)
 
+%Function creates a bubble joining anyone in a household <= maxnum to another household
+
 %maxnum is max number of people in house to allow them to join somebody else's
 %household
 
