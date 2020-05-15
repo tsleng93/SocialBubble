@@ -1,7 +1,8 @@
-function [M, B] = HouseholdMaker2(SizeHouse,NumHouse, ProbHouse, SizeBubble)
+function [M, B, C] = HouseholdMaker2(SizeHouse,NumHouse, ProbHouse, SizeBubble)
 
-%Make Households with probability ProbHouse
-%Also makes Bubble
+%Make Households H with probability ProbHouse
+%Also makes Bubble B
+%C counts the number of individuals someone has in their bubble
 
 if nargin == 0
     SizeHouse = 1:7;
@@ -21,7 +22,7 @@ B = [];
 ProbHouse = cumsum(ProbHouse);
 
 Bubbleadd = zeros(1,SizeBubble);
-%%%This makes bubbles of 2 households
+%%%This makes bubbles of SizeBubble households
 for i  = 1:NumHouse
     r = rand;
     for j = 1:length(ProbHouse)        
@@ -42,7 +43,6 @@ end
 %{
 SizeBubble2 = 10;
 Bsum = 0;
-
 for i  = 1:NumHouse
     r = rand;
     for j = 1:length(ProbHouse)        
@@ -59,11 +59,10 @@ for i  = 1:NumHouse
     end
     
 end
-
 B = blkdiag(B, sparse(ones(Bsum)));
-
 %}
 
 
 
 B = B - M;
+C = sum(M);
