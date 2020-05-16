@@ -1,38 +1,17 @@
-function [Mnew, Phi] = RewireMatrix2(M,p)
+function [Mnew, Phi] = RewireMatrix2(M,p, Type)
 
     N = length(M);
     
-    M = triu(M) - speye(N,N); %consider only upper triangular and remove diagonal
+    
+    if Type == 'H'
+        M = triu(M) - speye(N,N); %consider only upper triangular and remove diagonal
+    elseif Type == 'B'
+        M = triu(M);
+    end
+    
     [x,y]=find(M);   % links without the diagonal.
     
     r = randperm(length(x), round(length(x)*p)); % randomly choose links to swap
-    %{
-
-    for i = 1:length(r)
-       
-        X = x(r(i)); Y = y(r(i));
-        
-        if i < length(r)
-            nX = x(r(i+1)); nY = y(r(i+1));
-        else
-            nX = x(r(1)); nY = y(r(1));
-        end
-        
-        M(X,Y) = 0; % remove link
-        %M(nX,nY) = 0; %remove link
-        
-        if X < nY %so that we add link to upper diagonal matrix
-            M(X,nY) = 1; %add link
-        else
-            M(nY, X) = 1;
-        end
-        
-    end
-    
-    %recover original matrix
-    M = M+M'+speye(N,N);
-    %}
-    
     
     %create second lists that we will update
     x2 = x; y2 = y;
@@ -70,7 +49,11 @@ function [Mnew, Phi] = RewireMatrix2(M,p)
     end
     
     %recover full matrix
-    M = M+M'+speye(N,N);
+    if Type == 'H'
+        M = M+M'+speye(N,N);
+    elseif Type == 'B'
+        M = M + M';
+    end
     
     
     
@@ -91,3 +74,4 @@ function [Mnew, Phi] = RewireMatrix2(M,p)
     Phi = Triangles/Triples;
     
     Mnew = M;
+
