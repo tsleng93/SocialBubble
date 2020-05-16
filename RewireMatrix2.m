@@ -43,7 +43,7 @@ function [Mnew, Phi] = RewireMatrix2(M,p, Type)
                 M(Y, nX) = 1;
             end
             %reset links of node you can swap with
-            [x2,y2] = find(M);
+            %[x2,y2] = find(M);
         end
         
     end
