@@ -1,31 +1,41 @@
-function [Mnew, Phi] = RewireMatrix2(M,p, Type)
+function [Mnew, Phi] = RewireMatrix2(M,p)
+%Connor's code
 
     N = length(M);
     
-    
-    if Type == 'H'
+    %working out if the matrix is household or not.
+    if trace(M) > 0
         M = triu(M) - speye(N,N); %consider only upper triangular and remove diagonal
-    elseif Type == 'B'
+        Type = 'H';
+    else
         M = triu(M);
+        Type = 'B';
     end
     
     [x,y]=find(M);   % links without the diagonal.
     
     r = randperm(length(x), round(length(x)*p)); % randomly choose links to swap
     
-    %create second lists that we will update
-    x2 = x; y2 = y;
+    %making the length of r even if r is odd
+    if mod(length(r),2) ~= 0
+        r(end) = [];
+    end
     
-    for i = 1:length(r)
+    while length(r) > 0
         
-        X = x(r(i)); Y = y(r(i));
+        X = x(r(1)); Y = y(r(1));
         
-        if M(X,Y) == 1 %if the link is still there
-            
+        
+        if M(X,Y) == 1 %if the link is still there      
+        
             nX = 1; nY = 1;
+            % this while loop checks that all 4 people are unique
             while length(unique([X Y nX nY]))<4  || M(X,nY) + M(nY,X) + M(nX,Y) + M(Y,nX) >0
-                r2 = randi(length(r));
-                nX = x2(r(r2)); nY = y2(r(r2));
+                r2 = randi(length(r) - 1) + 1;
+               
+                nX = x(r(r2)); nY = y(r(r2));
+          
+     
             end
             
             M(X,Y) = 0; %remove link
@@ -42,11 +52,17 @@ function [Mnew, Phi] = RewireMatrix2(M,p, Type)
             else
                 M(Y, nX) = 1;
             end
-            %reset links of node you can swap with
-            %[x2,y2] = find(M);
+            
+            %deleting used r elements
+            %need to delete this one first as the other way round would
+            %change the element that r2 refers to
+            r(r2) = [];
+            r(1) = [];
+            
         end
         
     end
+
     
     %recover full matrix
     if Type == 'H'
