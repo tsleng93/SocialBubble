@@ -21,7 +21,7 @@ function [Mnew, Phi] = RewireMatrix2(M,p)
         r(end) = [];
     end
     
-    while length(r) > 0
+    while ~isempty(r)
         
         X = x(r(1)); Y = y(r(1));
         
@@ -90,4 +90,6 @@ function [Mnew, Phi] = RewireMatrix2(M,p)
     Phi = Triangles/Triples;
     
     Mnew = M;
+
+
 
