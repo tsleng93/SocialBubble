@@ -4,17 +4,18 @@ function [M, B, C, A] = HouseholdMakerChild(SizeHouse,NumHouse, ProbHouse, ProbC
 %Also makes Bubble B
 %C is a vector counting the number of individuals someone has in their
 %household
-%A is a vector of ages of individuals, i.e. whether they are children (0) or
-%adults (1)
+%A is a vector of ages of individuals, i.e. whether they are children (1) or
+%adults (0)
 
 if nargin == 0
     SizeHouse = 1:7;
-    NumHouse = 4500;
+    NumHouse =  3000;
     ProbHouse = [0.30 0.34 0.16 0.13 0.05 0.016 0.004];
    
     %ProbChild is the number of households with children of size N / total
     %households of size N
     ProbChild = [0 0.023 0.127 0.345 0.475 0.528 0.605];
+    %ProbChild = [0 0 0 0 0 0 0];
     
     
     SizeBubble = 2;
@@ -50,20 +51,21 @@ for i  = 1:NumHouse
             if r2 < ProbChild(j)
                 %Record whether child or adult
                 if SizeHouse(j) == 1
-                    A(a) = 1;
+                    A(a) = 0;
                     a = a+1;
                 elseif SizeHouse(j) == 2
-                    A(a) = 1;
-                    A(a+1) = 0;
+                    A(a) = 0;
+                    A(a+1) = 1;
                     a = a+2;
                 else
-                    A(a:(a+1)) = [1 1];
-                    A((a+2):(a + SizeHouse(j) - 1)) = zeros(1, length(SizeHouse(j) - 2));
+                    A(a:(a+1)) = [0 0];
+                    A((a+2):(a + SizeHouse(j) - 1)) = ones(1, length(SizeHouse(j) - 2));
                     a = a+SizeHouse(j);
                 end
             else
                 %All adults
-                A(a: (a+SizeHouse(j)-1)) = 1;
+                A(a: (a+SizeHouse(j)-1)) = 0;
+                a = a+SizeHouse(j);
             end
             
             
