@@ -28,7 +28,7 @@ function [EpiSize, RSize, Rgen, Igen] = InfectionProcessFull(M, eps, C, Infect_0
         
         
         counter = 1;
-        while n>old_n %& counter < 10
+        while n>old_n & counter < 10
             
             new_infections = n-old_n;
             
