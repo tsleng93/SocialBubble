@@ -1,4 +1,4 @@
-function [M, B, C, Age] = HouseholdMakerAge(NumHouse, House_List, ProbHouse, SizeBubble)
+function [M, B, C, Age] = HouseholdMakerAge(NumHouse, House_List, ProbHouse, House_Sizes, SizeBubble)
 
 %Make Households H with probability ProbHouse
 %Also makes Bubble B
@@ -9,14 +9,15 @@ function [M, B, C, Age] = HouseholdMakerAge(NumHouse, House_List, ProbHouse, Siz
 
 
 if nargin == 0
-    NumHouse =  30;
+    NumHouse =  3000;
     House_List = load('House_List.csv');
     ProbHouse = load('uk_composition_dist.csv');
+    House_Sizes = load('House_Sizes.csv');
     SizeBubble = 2;
 end
 
 %Always make NumHouse/SizeBubble an integer
-load('House_Sizes.csv');
+
 
 if mod(NumHouse, SizeBubble) ~= 0
     NumHouse = NumHouse + (SizeBubble - mod(NumHouse, SizeBubble));
@@ -59,6 +60,6 @@ end
 B = B - M;
 C = sum(M);
 
-spy(M);
-figure
-spy(B);
+%spy(M);
+%figure
+%spy(B);
