@@ -1,23 +1,43 @@
-function [EpiSize, RSize, Rgen, Igen] = InfectionProcessFull(M, eps, C, Infect_0,A,RelTrans,RelInf)
+function [EpiSize, RSize, Rgen, Igen, Deaths] = InfectionProcessFull(M, eps, C, Infect_0,A,RelTrans,RelInf)
 %Infection Process on a Pruned Matrix
 
+N = length(M);
 
-  N = length(M);
-  
+L = length(RelTrans); 
 
-  
- L = length(RelTrans); 
+
+
+for j = 1:L
+    RelInf_Vec(A==j) = RelInf(j);          
+end
+
+%Make initial infection probabilities
+%Init_Infect = RelInf_Vec./C;
+ 
+ 
   
   
     R = [];
-    for loop=1:1000
-        I=zeros(N,1); I(randperm(N, Infect_0))=1;
+    for loop=1:100
+        I=zeros(N,1); 
+        %{
+        Init_Infect_2 = Init_Infect;
+        CumInit = cumsum(Init_Infect_2)/sum(Init_Infect_2);
+        
+        for k = 1:Infect_0
+            r = rand;
+            f = find(CumInit>r, 1);
+            I(f) = 1;
+            Init_Infect_2(f) = 0;
+            CumInit = cumsum(Init_Infect_2)/sum(Init_Infect_2);            
+        end
+        %}
+        I(randperm(N, Infect_0))=1;
+        
+        
         old_n=0; n=Infect_0;
         
         %Number of Children Infected and Adults
-        %n_Ch = 0; old_n_Ch = 0;
-        %n_Ad = Infect_0; old_n_Ad = 0;
-        
         n_Vec = zeros(1,L);
         old_n_Vec = zeros(1,L);
         
@@ -32,37 +52,25 @@ function [EpiSize, RSize, Rgen, Igen] = InfectionProcessFull(M, eps, C, Infect_0
             
             new_infections = n-old_n;
             
-            %{
-            new_infections_Ch = n_Ch - old_n_Ch;
-            new_infections_Ad = n_Ad - old_n_Ad;
-            new_infections_El = n_El - old_n_El;
-            
-            old_n_Ch = n_Ch;
-            old_n_Ad = n_Ad;
-            old_n_El = n_El;
-            %}          
             new_infections_Vec = n_Vec - old_n_Vec;
             
             
             old_n=n;
             old_n_Vec = n_Vec;
+           
             
-            %eps2 is random R0 of infected individuals
-            %J =  ones(1,N)*1-exp(-eps*new_infections./(C*N));
-            J =  ones(1,N)*1-exp(-eps*(sum(RelTrans.*new_infections_Vec))./(C*N));          
+             
             
-            %change relative chance of becoming infected 
-            %for children
-            %{
-            J(A==1) = RelInf(1)*J(A==1);
-            %for adults
-            J(A==0) = RelInf(2)*J(A==0);
-            %for elderly
-            J(A==2) = RelInf(3)*J(A==2);
-            %}
-            for i = 1:L
-               J(A==i) = RelInf(i)*J(A==i); 
-            end
+            %if RelInf effects rates
+            J = (1-exp(-eps*(sum(RelTrans.*new_infections_Vec)/N).*(RelInf_Vec./C))); 
+            
+            
+            %if RelInf effects probabilties
+            %J =  ones(1,N)*1-exp(-eps*(sum(RelTrans.*new_infections_Vec))./(C*N));
+            %If Relinf effects probabilities
+            %for i = 1:L
+            %   J(A==i) = RelInf(i)*J(A==i); 
+            %end
             
             
             r = rand(size(J));
@@ -71,22 +79,20 @@ function [EpiSize, RSize, Rgen, Igen] = InfectionProcessFull(M, eps, C, Infect_0
             I=sign(M*I);
             n=sum(I);
             %caculate number of each
-            %{
-            n_Ch = sum(I.*Ch');
-            n_Ad = sum(I.*Ad');
-            n_El = sum(I.*El');
-            %}
             for i = 1:L
                n_Vec(i) = sum(I.*(A==i)');               
             end
-            
-          
+                      
             R(loop, counter) = (n - old_n)/new_infections*(N/(N-old_n));
+            %R(loop, counter) = (n - old_n)/new_infections;
             Iloop(loop, counter) = old_n;
-            counter = counter+1;
+            counter = counter+1;            
+            
         end
         
         Num_Infected(loop)=n;
+        
+        Vec_Infected(loop,:) = n_Vec;
 
         
     end
@@ -104,4 +110,8 @@ function [EpiSize, RSize, Rgen, Igen] = InfectionProcessFull(M, eps, C, Infect_0
         Igen(i) = mean(B);
     end
     
-    RSize = Rgen(5);
+    Vec_Infect_2 = mean(Vec_Infected);
+   
+    Deaths = (0.005/100)*sum(Vec_Infect_2(1:4)) + (0.22/100)*sum(Vec_Infect_2(5:8)) + (4.67/100)*sum(Vec_Infect_2(9:10));
+    
+    RSize = Rgen(4);
