@@ -1,4 +1,4 @@
-function [NewM] = PruneMatrixFull(M,tau, Type, A, RelTrans, RelInf)
+function [NewM, SAR] = PruneMatrixFull(M,tau, Type, A, RelTrans, RelInf)
 
 %M full adjacency matrix
 %tau is transmission rate
@@ -19,7 +19,7 @@ if nargin == 0
     
 end
 
-Morig = M;
+
 
 for i = 1:length(RelInf)
     AInf(A==i) = RelInf(i);
@@ -31,7 +31,7 @@ if Type == 'H'
    M = M - speye(length(M),length(M));
 end
     
-
+Morig = M;
 
 %Define rate matrix
 %ATrans bit defines transmission probability from individual connected to
@@ -39,8 +39,11 @@ end
 %household into the equation
 
 
-
+%If Ainf refers to rates
 temp = AInf.*(tau./sum(M));
+%If Ainf refers to probabilities
+%temp = (tau./sum(M));
+
 temp(isinf(temp)) = 0;
 RateM = (ATrans.*M).*temp';
 
@@ -63,9 +66,15 @@ RateM =RateM1.*RateM2;
 %Define probability matrix - people infect houses with probability P
 PM = 1 - exp(-RateM);
 
+%If Ainf refers to probabilities
+%PM = AInf.*PM;
+
+
 %Sample matrix
 r = rand(size(M));
 M(r>PM) = 0;
+
+SAR = sum(sum(M))/sum(sum(Morig));
 
 if Type == 'H'
     M = M + speye(length(M),length(M));
@@ -76,3 +85,4 @@ NewM = M;
 %spy(M);
 %figure
 %spy(Morig);
+
