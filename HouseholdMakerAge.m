@@ -9,7 +9,7 @@ function [M, B, C, Age] = HouseholdMakerAge(NumHouse, House_List, ProbHouse, Hou
 
 
 if nargin == 0
-    NumHouse =  3000;
+    NumHouse =  10000;
     House_List = load('House_List.csv');
     ProbHouse = load('uk_composition_dist.csv');
     House_Sizes = load('House_Sizes.csv');
