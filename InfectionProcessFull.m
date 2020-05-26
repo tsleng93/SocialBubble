@@ -1,4 +1,4 @@
-function [EpiSize, RSize, Rgen, Igen, Deaths] = InfectionProcessFull(M, eps, C, Infect_0,A,RelTrans,RelInf)
+function [EpiSize, RSize, Rgen, Igen, Deaths] = InfectionProcessFull(M, eps, C, Infect_0,A,RelTrans,RelInf,Death_Prop)
 %Infection Process on a Pruned Matrix
 
 N = length(M);
@@ -13,7 +13,8 @@ end
 
 %Make initial infection probabilities
 %Init_Infect = RelInf_Vec./C;
- 
+
+
  
   
   
@@ -48,6 +49,10 @@ end
         
         
         counter = 1;
+        
+        %add this in case n_Vec_4 isn't defined
+        n_Vec4 = 0;
+        
         while n>old_n & counter < 10
             
             new_infections = n-old_n;
@@ -116,6 +121,7 @@ end
     
     Vec_Infect_2 = mean(Vec_Infected);
    
-    Deaths = (0.005/100)*sum(Vec_Infect_2(1:2)) + (0.22/100)*sum(Vec_Infect_2(3:7)) + (4.67/100)*sum(Vec_Infect_2(8:9));
-    
+    %Deaths = (0.005/100)*sum(Vec_Infect_2(1:2)) + (0.22/100)*sum(Vec_Infect_2(3:7)) + (4.67/100)*sum(Vec_Infect_2(8:9));
+    Deaths = sum(Death_Prop.*Vec_Infect_2);
+
     RSize = Rgen(4);
