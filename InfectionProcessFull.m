@@ -82,6 +82,10 @@ end
             for i = 1:L
                n_Vec(i) = sum(I.*(A==i)');               
             end
+            
+            if counter == 4
+                n_Vec4 = n_Vec;
+            end
                       
             R(loop, counter) = (n - old_n)/new_infections*(N/(N-old_n));
             %R(loop, counter) = (n - old_n)/new_infections;
@@ -92,7 +96,7 @@ end
         
         Num_Infected(loop)=n;
         
-        Vec_Infected(loop,:) = n_Vec;
+        Vec_Infected(loop,:) = n_Vec - n_Vec4;
 
         
     end
@@ -112,6 +116,6 @@ end
     
     Vec_Infect_2 = mean(Vec_Infected);
    
-    Deaths = (0.005/100)*sum(Vec_Infect_2(1:4)) + (0.22/100)*sum(Vec_Infect_2(5:8)) + (4.67/100)*sum(Vec_Infect_2(9:10));
+    Deaths = (0.005/100)*sum(Vec_Infect_2(1:2)) + (0.22/100)*sum(Vec_Infect_2(3:7)) + (4.67/100)*sum(Vec_Infect_2(8:9));
     
     RSize = Rgen(4);
