@@ -42,12 +42,16 @@ House_Sizes = load('Census_House_Sizes.csv');
 
 %base parameters
 SizeBubble = 2;
-NumHouse = 3000;
+NumHouse = 10000;
 Runs = 20;
 
 
-MinScenario = 1;
-MaxScenario = 15;
+%MinScenario = 16;
+%MaxScenario = 24;
+%Connor runs this one
+ScenarioVec = 1:7;
+%Trystan runs this one
+%ScenarioVec = [8 9 11 14 20 26 29];
 
 
 %Death probability
@@ -58,15 +62,15 @@ tauLS = [0.29 0.64 1.59];
 tauWar = [0.23 0.54 1.46];
 %base epsilon values - LSHTM - epsilons to be checked before final run
 %R = 0.8
-epsLS1 = [1.76 1.51 1.16];
+epsLS1 = [1.735 1.49 1.15];
 %R = 0.7
-epsLS2 = [1.53 1.3 1];
+epsLS2 = [1.53 1.29 1];
 %R = 0.9
 epsLS3 = [1.99 1.69 1.31];
 %mean-field at individual level
-epsLS4 = [0.75 0.63 0.44];
+epsLS4 = [0.75 0.62 0.44];
 %base epsilon values - Warwick
-epsWar = [0.87 0.76 0.64];
+epsWar = [0.87 0.75 0.64];
 
 %RelInf
 RelInfLS = [0.5 0.5 1 1 1 1 1 1 1];
@@ -87,8 +91,8 @@ eps = [epsLS1 epsLS1 epsLS1 epsLS2 epsLS3 epsWar epsWar epsWar epsLS4 epsLS1];
 
 %{
 %Find SAR parameters
-for i = MinScenario:MaxScenario
-    
+for i = ScenarioVec
+    tic
     RelInf = RelInfM(i,:);
     RelTrans = RelTransM(i,:);
     
@@ -111,36 +115,41 @@ for i = MinScenario:MaxScenario
         i
         
     end
+    toc
 end
 %}
 
 %Main runs
-tic
+
 for j=1:Runs
     j
+    tic
+    
     %With full matrix
     H = 1;
     while mod(length(H), 4) ~= 0
         [H, B, C, Age, BH] = HouseholdMakerAge(NumHouse, House_List, ProbHouse, House_Sizes, SizeBubble, 2*SizeBubble);
     end
+    Cm = C;
     
     Bc2 = 1*BubbleMaker1(speye(length(H)), 4, 1);
     Bc2 = BubbleNonCompliance(Bc2, 1, 0.36);  
         
-    for i = MinScenario:MaxScenario
+    for i = ScenarioVec
         RelInf = RelInfM(i,:);
         RelTrans = RelTransM(i,:);
         
         
-        if i == 30
+        if i > 27
             B = BH;
+            C = Cm;
         end
         
-        if i > 24 && i < 28
-           C = ones(1, length(H)); 
+        if i > 24 && i < 28           
+           C = ones(1, length(H));
         end
         
-        
+
                 
         NewH = PruneMatrixFull(H, tauH(i), 'H',  Age, RelTrans, RelInf);
         NewB = PruneMatrixFull(B, tauB(i), 'B', Age, RelTrans, RelInf);
@@ -148,6 +157,7 @@ for j=1:Runs
         
         NewBc2 = PruneMatrixFull(Bc2, tauB(i), 'B', Age, RelTrans, RelInf);
         NewMc2 = 1*sparse(NewH|NewBc2);
+        
         
         %all in bubble
         [~, RSize, Rgen, ~, Deaths] = InfectionProcessFull(NewM, eps(i), C, 100,Age,RelTrans,RelInf, Death_Prop);
@@ -202,7 +212,7 @@ for j=1:Runs
     [H2, B2, C2, Age2, BH2] = HouseholdMakerAge(NumSolo, House_List_Solo, ProbHouse_Solo, House_Sizes_Solo, SizeBubble, 2*SizeBubble);
     [H3, ~, C3, Age3, ~] = HouseholdMakerAge(NumMore, House_List_More, ProbHouse_More, House_Sizes_More, SizeBubble, 2*SizeBubble);
      
-    if i == 30
+    if i > 27
             B1 = BH1;
             B2 = BH2;
     end
@@ -216,12 +226,17 @@ for j=1:Runs
 
 
     Age = [Age1, Age2, Age3];
-    C = [C1, C2, C3];   
+    C = [C1, C2, C3];
+    Cm = C;
     
-    for i = MinScenario:MaxScenario
+    for i = ScenarioVec
                 
         if i > 24 && i < 28
            C = ones(1, length(H)); 
+        end
+        
+        if i > 27
+           C = Cm; 
         end
         
         
@@ -277,21 +292,37 @@ for j=1:Runs
     ProbHouse_Adult = ProbHouse_Adult/sum(ProbHouse_Adult);
     House_Sizes_Adult = House_Sizes(temp2==0);
     
-    [H1, B1, C1, Age1] = HouseholdMakerAge(round(Frac*NumHouse), House_List_Child, ProbHouse_Child, House_Sizes_Child, SizeBubble, SizeBubble);
+    [H1, B1, C1, Age1, BH1] = HouseholdMakerAge(round(Frac*NumHouse), House_List_Child, ProbHouse_Child, House_Sizes_Child, SizeBubble, SizeBubble);
 
     [H2, ~, C2, Age2] = HouseholdMakerAge(NumHouse - (round(Frac*NumHouse)), House_List_Adult, ProbHouse_Adult, House_Sizes_Adult, SizeBubble, SizeBubble);
 
     H = blkdiag(H1,H2);
+    
+    if i > 27
+      B1 = BH1;
+    end
+    
     B = blkdiag(B1, zeros(length(H2)));
+    
+
+    
+    
     
     Age = [Age1, Age2];
     C = [C1, C2];
+    Cm = C;
     
     
-    for i = MinScenario:MaxScenario
+    for i = ScenarioVec
+        
+        RelInf = RelInfM(i,:);
+        RelTrans = RelTransM(i,:);        
         
         if i > 24 && i < 28
            C = ones(1, length(H)); 
+        end
+        if i > 27
+           C = Cm; 
         end
         
         
@@ -306,14 +337,9 @@ for j=1:Runs
     end
     
     
-        
+    toc 
 end
-toc
+
 %}
     
-    
-
-
-
-
 
