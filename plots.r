@@ -1,8 +1,15 @@
+#########
+# plotting scripts 
+# for "The effectiveness of social bubbles as part of a Covid-19 lockdown exit strategy, a modelling study"
+# by Leng et al
+# author: Stefan Flasche
 
+
+########################
+#load packages
+########################
 require(reshape2)
 require(tidyverse)
-require(RSpectra)
-require(facetscales)
 
 ########################
 #read in data
@@ -169,45 +176,9 @@ for(i in 1){
 
 
 
-
-
-
-
-
-
-
-###########################
-#sone test functions
-
-
-
-
 ########################
-#individual level risk
+# create contact matrix for plotting
 ########################
-infection.risk = function(e, th, nh, tb, nb){
-  return(1 - (exp(-e)) * (exp(-e/nh*th))^nh * (exp(-e/nb*tb))^nb )
-}
-
-#single person vs single person + bubble with 3 
-infection.risk(1.38,.22,0,.22,0)
-infection.risk(1.38,.22,0,.22,3)
-infection.risk(1.38,.22,0,.22,3)/infection.risk(1.38,.22,0,.22,0) -1
-
-#single person in hh of 3 vs ssingle person in hh of 3 + bubble with another 3 
-infection.risk(1.38,.22,2,.22,0)
-infection.risk(1.38,.22,2,.22,3)
-infection.risk(1.38,.22,2,.22,3)/infection.risk(1.38,.22,2,.22,0) -1
-
-
-########################
-#simple model version
-########################
-require(reshape2)
-require(tidyverse)
-require(RSpectra)
-
-# create matrix every person infects one in HH and one outside
 N=80
 Nh=4
 p=1/5
@@ -256,67 +227,5 @@ if(plot){
       theme(legend.position = "bottom")
 }
 ggsave("main_bubblematrix.pdf", units = "cm", width = 11, height = 12)
-
-# calculate R
-eigs_sym(M,1)$value
-
-#deterministic model simulation
-I = rep(0,N); I[sample(1:N,5)]=1
-R = rep(0,N)
-for(i in 1:100){
-  print(R <- sum(M %*% I)/sum(I))
-  I <- M %*% I  
-}
-
-#stochastic model
-Sims=25
-I = rep(0,N); I[sample(1:N,2)]=1
-R = rep(0,N)
-df = data.frame(Sim=1:Sims,
-                S=NA,
-                I=NA,
-                R=NA,
-                Rnet=NA)
-for(i in 1:Sims){
-  M.curr = matrix(1*(c(M)>runif(N^2)),N)
-  I.new <- (((M.curr %*% I)-R)==1)*1
-  if(sum(I)!=0){
-    Rnet <- sum(I.new)/sum(I) *length(I)/sum(1-R)
-  }else Rnet=0
-  R <- ((R + I.new)>0)*1
-  I <- I.new
-  df[i,] = c(i,sum(1-R),sum(I),sum(R),Rnet)
-}
-
-df %>% 
-  melt(id=c("Sim","Rnet")) %>%
-  ggplot(aes(x=Sim , y=value, color=variable)) +
-    geom_line()+
-    theme_light()
-
-df %>% 
-  melt(id=c("Sim","Rnet")) %>%
-  filter(variable=="S") %>%
-  ggplot(aes(x=Sim , y=Rnet)) +
-    geom_line()+
-    theme_light()
-
-# 1st generation only
-sims=1000
-Rnet=data.frame(Sim = 1:sims,
-                R = NA)
-for(i in 1:sims){
-  I = rep(0,N); I[sample(1:N,20)]=1
-  M.curr = matrix(1*(c(M)>runif(N^2)),N)
-  I.new <- M.curr %*% I
-  Rnet[i,"R"] <- sum(I.new)/sum(I)
-}
-
-Rnet %>%
-  ggplot(aes(x=Sim, y=R)) +
-    geom_line()+
-    theme_light()
-mean(Rnet$R)
-
 
 
