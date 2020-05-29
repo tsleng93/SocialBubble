@@ -1,3 +1,10 @@
+%This Script simply takes household data and formats it into a format we
+%use for forming househoulds in the model.
+
+%Authors: Trystan Leng and Connor White
+%Last update 29/05/2020.
+
+
 temp = load('uk_composition_list.csv');
 dist = load('uk_composition_dist.csv');
 

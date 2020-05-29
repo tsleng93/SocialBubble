@@ -1,5 +1,24 @@
 function [Mnew, Phi] = RewireMatrix2(M,p)
-%Connor's code
+
+%This function takes an adjacency matrix M and recconects a number of edges
+%that is proprotional to the value p. In this case M
+%is eiher a adjacency matrix for household connections or bubble 
+%connections.
+
+
+%Input:
+%   - M is the adjacency matrix for the household or bubble contacts.
+%   - p is the proportion of connections we want to recconnect. 
+
+%Output:
+%   - NewM is the adjacency matrix after it has been pruned.
+%   - Phi is the clusetring coefficient.
+
+%Note: M and Mnew are N x N matrices where N is the population size.
+
+%Authors: Trystan Leng, Connor White and Matt Keeling.
+%Last update 29/05/2020.
+
 
     N = length(M);
     
@@ -85,8 +104,7 @@ function [Mnew, Phi] = RewireMatrix2(M,p)
     M2 = MM*MM;
     Triples = sum(sum(M2)) - trace(M2);
     
-    %Triangles = trace(M2*M)
-    Triangles = sum(M2(MM==1))
+    Triangles = sum(M2(MM==1));
     Phi = Triangles/Triples;
     
     Mnew = M;

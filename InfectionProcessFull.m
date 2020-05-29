@@ -1,5 +1,39 @@
 function [EpiSize, RSize, Rgen, Igen, Deaths] = InfectionProcessFull(M, eps, C, Infect_0,A,RelTrans,RelInf,Death_Prop)
-%Infection Process on a Pruned Matrix
+
+%This function simulates multiple epidemics on a population with connection
+%given by M which is a pruned adjacency matrix. The parameters of the
+%epidemic is given from the variables passed to the funtion.
+
+
+%Input:
+%   - M is the adjacency matrix on which has been pruned.
+%   - eps is the community infection pressure transmission rate.
+%   - C is a vector which conatains the size of household each indiviual
+%   belongs to.
+%   - Infect_0 is the intitial number of infected people when we start the
+%   simulation.
+%   - A is a vector which store the age group each individual in the
+%   population belongs to.
+%   - RelTrans scales the the rate an individual transmits infection, 
+%   dependent on their age group.
+%   - RelInf scales the rate of transmission to an individual (i.e. their 
+%   rate of infection) dependent on their age group.
+%   - Death_Prop is the proportion of people who die when infected and is
+%   age dependent.
+
+%Output:
+%   - EpiSize is the average number of people infected from each
+%   simulation.
+%   - Rsize is what we use as the actual value for R which is the 4th
+%   - element of Rgen. 
+%   - Rgen is the average size of R for each time step in the simulations.
+%   - Igen is the average number of people infected at each timestep from
+%   each simulation.
+%   - Deaths is the average number of deaths from each simulation.
+
+
+%Authors: Trystan Leng, Connor White and Matt Keeling.
+%Last update 29/05/2020.
 
 N = length(M);
 
@@ -10,29 +44,11 @@ L = length(RelTrans);
 for j = 1:L
     RelInf_Vec(A==j) = RelInf(j);          
 end
-
-%Make initial infection probabilities
-%Init_Infect = RelInf_Vec./C;
-
-
- 
-  
   
     R = [];
     for loop=1:100
         I=zeros(N,1); 
-        %{
-        Init_Infect_2 = Init_Infect;
-        CumInit = cumsum(Init_Infect_2)/sum(Init_Infect_2);
-        
-        for k = 1:Infect_0
-            r = rand;
-            f = find(CumInit>r, 1);
-            I(f) = 1;
-            Init_Infect_2(f) = 0;
-            CumInit = cumsum(Init_Infect_2)/sum(Init_Infect_2);            
-        end
-        %}
+       
         I(randperm(N, Infect_0))=1;
         
         
@@ -63,20 +79,8 @@ end
             old_n=n;
             old_n_Vec = n_Vec;
            
-            
-             
-            
             %if RelInf effects rates
-            J = (1-exp(-eps*(sum(RelTrans.*new_infections_Vec)/N).*(RelInf_Vec./C))); 
-            
-            
-            %if RelInf effects probabilties
-            %J =  ones(1,N)*1-exp(-eps*(sum(RelTrans.*new_infections_Vec))./(C*N));
-            %If Relinf effects probabilities
-            %for i = 1:L
-            %   J(A==i) = RelInf(i)*J(A==i); 
-            %end
-            
+            J = (1-exp(-eps*(sum(RelTrans.*new_infections_Vec)/N).*(RelInf_Vec./C)));
             
             r = rand(size(J));
             I(r<J) = 1;            
@@ -93,7 +97,6 @@ end
             end
                       
             R(loop, counter) = (n - old_n)/new_infections*(N/(N-old_n));
-            %R(loop, counter) = (n - old_n)/new_infections;
             Iloop(loop, counter) = old_n;
             counter = counter+1;            
             
@@ -110,18 +113,13 @@ end
     
     for i = 1:size(R,2)
         A = R(:,i);
-        %A = A(~isnan(A));
-        %A = A(A~=0);
         Rgen(i) = mean(A);
         B = Iloop(:,i);
-        %B = B(~isnan(A));
-        %B = B(B~=0);
         Igen(i) = mean(B);
     end
     
     Vec_Infect_2 = mean(Vec_Infected);
    
-    %Deaths = (0.005/100)*sum(Vec_Infect_2(1:2)) + (0.22/100)*sum(Vec_Infect_2(3:7)) + (4.67/100)*sum(Vec_Infect_2(8:9));
     Deaths = sum(Death_Prop.*Vec_Infect_2);
 
     RSize = Rgen(4);

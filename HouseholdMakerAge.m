@@ -1,11 +1,39 @@
 function [M, B, C, Age, BH] = HouseholdMakerAge(NumHouse, House_List, ProbHouse, House_Sizes, SizeBubble,SizeBubble2)
 
-%Make Households H with probability ProbHouse
-%Also makes Bubble B
-%C is a vector counting the number of individuals someone has in their
-%household
-%Age is a vector of ages of individuals, in 5 year age gaps, until the 5th
-%which is 25-55
+%This function forms adjacency matrix for household connections and bubble
+%connections. The size and age structure of each house is taken from a
+%distribution of house types that we have aquire from data.
+
+
+%Input:
+%   - NumHouse is the number of houses we want to simulate.
+%   - House_List is a list of house types that we select from to form
+%   houses.
+%   - ProbHouse is the probability of of selecting a house from HouseList.
+%   - House_Sizes is a list which tells us the size of each house from
+%   House_List.
+%   - SizeBubble is the number of houses we want to form a bubble which we
+%   store in matrix B.
+%   - SizeBubble2 is the number of houses we want to store in the second
+%   half of BH. The first half of BH has bubbles with sizebubble number of
+%   houses.
+
+%Output:
+%   - M is the adjacency matrix for household connections.
+%   - B is the adjacency matrix for bubble connections where the bubbles
+%   are formed with SizeBubble number of houses.
+%   - C is a vector which is the size of house each individual belongs to.
+%   - Age is a vector which conatains what age group each individual
+%   belongs to in the population.
+%   - BH is the adjacency matrix for bubble connections where the first
+%   half of houses form bubbles with SizeBubble number of houses and the 
+%   second half od houses form bubbles with SizeBubble2 number of houses.
+
+%Note: M, B and BH are N x N matrices where N is the population size. C and
+%Age are vectors of size N.
+
+%Authors: Trystan Leng and Connor White
+%Last update 29/05/2020.
 
 
 if nargin == 0
@@ -79,7 +107,3 @@ end
 B = B - M;
 BH = BH - M;
 C = sum(M);
-
-%spy(M);
-%figure
-%spy(B);
