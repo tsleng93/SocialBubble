@@ -2,7 +2,7 @@ function [M, B, C, Age, BH, SizeHouse, TypeHouse, Position] = HouseholdMakerAge(
 
 %This function forms adjacency matrix for household connections and bubble
 %connections. The size and age structure of each house is taken from a
-%distribution of house types that we have aquire from data.
+%distribution of house types that we have aquired from data.
 
 
 %Input:
@@ -28,12 +28,18 @@ function [M, B, C, Age, BH, SizeHouse, TypeHouse, Position] = HouseholdMakerAge(
 %   - BH is the adjacency matrix for bubble connections where the first
 %   half of houses form bubbles with SizeBubble number of houses and the 
 %   second half od houses form bubbles with SizeBubble2 number of houses.
+%   - SizeHouse is a vector that stores the size of each house, and the
+%   number of elements is the number of houses.
+%   - TypeHouse stores whether or not a house contains a child of <10 or
+%   <20 or contains no children.
+%   - position is a vector that stores the position in the population of 
+%   the first member of the household.
 
 %Note: M, B and BH are N x N matrices where N is the population size. C and
 %Age are vectors of size N.
 
 %Authors: Trystan Leng and Connor White
-%Last update 29/05/2020.
+%Last update 30/05/2020.
 
 
 if nargin == 0
@@ -49,7 +55,7 @@ end
 if mod(NumHouse, SizeBubble) ~= 0
     NumHouse = NumHouse + (SizeBubble - mod(NumHouse, SizeBubble));
 end
-if mod(NumHouse/2, SizeBubble2) ~= 0
+if mod(NumHouse/2, SizeBubble23) ~= 0
     NumHouse = NumHouse + (SizeBubble2 - mod(NumHouse/2, SizeBubble2))*2;
 end
 
@@ -78,7 +84,7 @@ for i  = 1:NumHouse
             
             if sum(House == 1) > 0
                 TypeHouse(i) = 1; %1 for child < 10                   
-            elseif sum (House ==2) > 0
+            elseif sum (House == 2) > 0
                 TypeHouse(i) = 2; %2 for child < 20
             else
                 TypeHouse(i) = 0; % 0 for 0 children                                
