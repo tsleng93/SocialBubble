@@ -14,7 +14,6 @@ require(tidyverse)
 ########################
 #read in data
 ########################
-read.csv("HHs.csv") -> dt
 read.csv("HH.csv") %>% 
   melt(id = "Household.size") -> dt
 read.csv("Tab_RimpactMain.csv") %>%
@@ -74,8 +73,9 @@ dt.mainres %>%
     geom_linerange(position = position_dodge(.5)) +
     geom_point(position = position_dodge(.5)) +
     labs(x="", y="", color="Infection rate in\nthe bubble relative\nto houshold")+
-    scale_color_manual(values = c("#d1720490","#bab5b3","#2748e890")) +
-    theme_light() + theme(legend.position = c(0.9, 0.6),
+    scale_color_manual(values = c("#d1720490","#bab5b3","#2748e890"),
+                       labels = c("identical (100%)", "half (50%)", "small (10%)" )) +
+    theme_light() + theme(legend.position = c(0.87, 0.45),
                           legend.background = element_rect(fill=alpha('white', 0.7)),
                           legend.title=element_text(size=9)) + 
     coord_flip() +
