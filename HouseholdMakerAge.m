@@ -1,4 +1,4 @@
-function [M, B, C, Age, BH] = HouseholdMakerAge(NumHouse, House_List, ProbHouse, House_Sizes, SizeBubble,SizeBubble2)
+function [M, B, C, Age, BH, SizeHouse, TypeHouse, Position] = HouseholdMakerAge(NumHouse, House_List, ProbHouse, House_Sizes, SizeBubble,SizeBubble2)
 
 %This function forms adjacency matrix for household connections and bubble
 %connections. The size and age structure of each house is taken from a
@@ -37,7 +37,7 @@ function [M, B, C, Age, BH] = HouseholdMakerAge(NumHouse, House_List, ProbHouse,
 
 
 if nargin == 0
-    NumHouse =  10000;
+    NumHouse =  4000;
     House_List = load('Census_House_List.csv');
     ProbHouse = load('Census_composition_dist.csv');
     House_Sizes = load('Census_House_Sizes.csv');
@@ -56,7 +56,8 @@ end
 M = [];
 B = [];
 BH = [];
-ProbHouse = cumsum(ProbHouse);
+ProbHouse = cumsum(ProbHouse)/sum(ProbHouse);
+ProbHouse(end) = 1;
 
 %Store Age vector
 Age = [];
@@ -71,6 +72,21 @@ for i  = 1:NumHouse
             
             House = House_List(j,:);
             House = House(House > 0);
+            
+            %do size houses and type houses and position
+            SizeHouse(i) = length(House);
+            
+            if sum(House == 1) > 0
+                TypeHouse(i) = 1; %1 for child < 10                   
+            elseif sum (House ==2) > 0
+                TypeHouse(i) = 2; %2 for child < 20
+            else
+                TypeHouse(i) = 0; % 0 for 0 children                                
+            end
+            
+            Position(i) = length(M)+1;
+            
+            
             M = blkdiag(M,sparse(ones(House_Sizes(j))));
             Bubbleadd(mod(i,SizeBubble)+1) = House_Sizes(j); 
             
