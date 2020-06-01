@@ -1,8 +1,7 @@
 function B2 = BubbleNonCompliance(B, p, d)
 
-%This function forms adjacency matrix for bubble connections. It takes the
-%household connection matrix and will create bubbles which are formed of
-%houses which are of size equal to or smaller than the number maxnum
+%This function takes the adjacency matrix for bubble connections and passes
+%it to the function RewireMatrix to remove a proportion p of the edges. 
 
 
 %Input:

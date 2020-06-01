@@ -2,7 +2,7 @@ function [EpiSize, RSize, Rgen, Igen, Deaths] = InfectionProcessFull(M, eps, C, 
 
 %This function simulates multiple epidemics on a population with connection
 %given by M which is a pruned adjacency matrix. The parameters of the
-%epidemic is given from the variables passed to the funtion.
+%epidemic is given from the variables passed to the function.
 
 
 %Input:

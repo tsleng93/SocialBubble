@@ -1,7 +1,20 @@
 function B = NonAdherenceBubble(H, TypeorSize, Position, d)
 
-%d = 1;
+%This function forms and adjacency matrix for Bubble connections. The
+%bubbles are formed from households that either are of size 1, or contain a
+%child of <10 years of age.
 
+%Input:
+%   - H is the adjacency matrix for Household connections.
+%   - TypeorSize is a vector that contains either the type of house (e.g if
+%   it contains children or not)  or the size of each house.
+%   - position is a vector that stores the position in the population of 
+%   the first member of the household.
+%   d is the proportion of houses that fill the condition that we want to
+%   form into a bubble.
+
+%Output
+%   - B is the adjacency matrix for bubble connections.
 
 temp = find(TypeorSize == 1);
 
