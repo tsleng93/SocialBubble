@@ -10,6 +10,7 @@
 ########################
 require(reshape2)
 require(tidyverse)
+require(gridExtra)
 
 ########################
 #read in data
@@ -19,7 +20,8 @@ read.csv("HH.csv") %>%
 read.csv("Tab_RimpactMain.csv") %>%
   select(-(12:17)) %>%                            
   rbind(read.csv("Tab_DimpactMain.csv")) %>% 
-  mutate(Outcome = gsub("Disease incidence increase","Increase in fatalities",Outcome)) -> dt.res    
+  mutate(Outcome = gsub("Disease incidence increase","Increase in fatalities",Outcome)) %>%
+  mutate(Outcome = gsub("Fatality Incidence Increase","Increase in fatalities",Outcome))->  dt.res    
 
 
 ########################
@@ -81,21 +83,20 @@ dt.mainres %>%
     coord_flip() +
     scale_y_log10(breaks = my_breaks)+
     facet_grid(.~Outcome, scales = "free_x") +
-    scale_x_discrete(labels = c("C1: Comparator 1\nstatus quo:\nno social bubbles",
-                                "C2: Comparator 2\n33 percent increase\n their random contacts",
-                                "1: Households with\nprimary school age\nchildren pair up",
-                                "2: Households with\nchildren of any age\n pair up",
-                                "3: Single occupancy\nhouseholds pair up",
-                                "4: Single occupancy\nhouseholds pair up\nwith random household",
-                                "5: Scenarios 1 and 3\ncombined",
-                                "6: All households\npair up randomly"
-                                ))
+    scale_x_discrete(labels = c("Scenario C1:\n(no social bubbles)",
+                                "Scenario C2:\n(more random contacts)",
+                                "Scenario 1:\n(young children)",
+                                "Scenario 2:\n(children))",
+                                "Scenario 3:\n(Single households)",
+                                "Scenario 4:\n(Single households\nwith any)",
+                                "Scenario 5:\n(Scenarios 1 and 3\ncombined)",
+                                "Scenario 6:\n(All households)"))
 ggsave("main_results.pdf", units = "cm", width = 18, height = 12)
 
 ########################
 #plot Tornado
 ########################
-for(i in 1){
+for(i in 1:6){
   data.frame(list(Outcome=NA, 
                   Scenario=NA, 
                   val.lo=1, 
@@ -146,9 +147,9 @@ for(i in 1){
             dt.res %>% filter(Scenario==i, Outcome=="Increase in fatalities", Parameter.set=="LSHTM", Compliance=="Compliance", Mean.field.assumption=="Household",R_init==.8, TauB=="half") %>% select(value) %>% as.numeric(),
             dt.res %>% filter(Scenario==i, Outcome=="Increase in fatalities", Parameter.set=="LSHTM", Compliance=="Non-compliance", Mean.field.assumption=="Household",R_init==.8, TauB=="half") %>% select(value) %>% as.numeric())) %>%
     rbind(c("Increase in fatalities","Rinit",
-            dt.res %>% filter(Scenario==i, Outcome=="Increase in fatalities", Parameter.set=="LSHTM", Compliance=="Compliance", Mean.field.assumption=="Household",R_init==.7, TauB=="half") %>% select(value) %>% as.numeric(),
+            dt.res %>% filter(Scenario==i, Outcome=="Increase in fatalities", Parameter.set=="LSHTM", Compliance=="Compliance", Mean.field.assumption=="Household",R_init==.9, TauB=="half") %>% select(value) %>% as.numeric(),
             dt.res %>% filter(Scenario==i, Outcome=="Increase in fatalities", Parameter.set=="LSHTM", Compliance=="Compliance", Mean.field.assumption=="Household",R_init==.8, TauB=="half") %>% select(value) %>% as.numeric(),
-            dt.res %>% filter(Scenario==i, Outcome=="Increase in fatalities", Parameter.set=="LSHTM", Compliance=="Compliance", Mean.field.assumption=="Household",R_init==.9, TauB=="half") %>% select(value) %>% as.numeric())) %>%
+            dt.res %>% filter(Scenario==i, Outcome=="Increase in fatalities", Parameter.set=="LSHTM", Compliance=="Compliance", Mean.field.assumption=="Household",R_init==.7, TauB=="half") %>% select(value) %>% as.numeric())) %>%
     slice(-1) -> dt.tornado
   
   hline.dat <- data.frame(Outcome = c("Net Reproduction Number","Increase in fatalities"),
@@ -229,3 +230,55 @@ if(plot){
 ggsave("main_bubblematrix.pdf", units = "cm", width = 11, height = 12)
 
 
+
+########################
+# Plot fatality equity
+########################
+
+read.csv("Fatality_increase_fig.csv") %>%
+  melt(id="Scenario") -> dt.fat
+
+dt.fat %>%
+  filter(variable %in% c("K.M", "L.N")) %>%
+  ggplot(aes(x=Scenario, y=value, fill=variable)) +
+    geom_bar(stat="identity", position = position_dodge(.7), alpha=.6, color="white") +
+    scale_y_log10() +
+    scale_fill_manual(labels=c("eligible","not eligible"),
+                      values=c("#2748e8","#d17204"))+
+    scale_x_discrete(labels = c("Scenario 1:\n(young children)",
+                                "Scenario 2:\n(children))",
+                                "Scenario 3:\n(Single households)",
+                                "Scenario 4:\n(Single households\nwith any)",
+                                "Scenario 5:\n(Scenarios 1 and 3\ncombined)",
+                                "Scenario 6:\n(All households)")) +
+    coord_flip()+
+    labs(x="",
+         y="Relative risks for infection compared to eligible / not eligible\nhousholds in scenario C1 (status quo)",
+         fill="Household eligibility\nfor forming social bubbles") +
+    theme_light() + theme(legend.position = c(0.8, 0.3),
+                          legend.background = element_rect(fill=alpha('white', 0.7)),
+                          legend.title=element_text(size=9)) -> p1
+
+dt.fat %>%
+  filter(variable %in% c("PAF.B", "PAF.C","PAF.C1")) %>%
+  ggplot(aes(x=Scenario, y=value, fill=variable)) +
+    geom_bar(stat="identity", position = position_dodge(.7), alpha=.6, color="white") +
+    scale_fill_manual(labels=c("excess in\neligible households","excess in not\neligible households","baseline"),
+                      values=c("#2748e8","#d17204","grey"))+
+    scale_x_discrete(labels = c("",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "")) +
+    scale_y_continuous(labels = scales::percent) +
+    coord_flip()+
+    labs(x="",
+         y="Percentage of fatalities\n ",
+         fill="Fatalities") +
+    theme_light() + theme(legend.position = c(0.8, 0.3),
+                          legend.background = element_rect(fill=alpha('white', 0.7)),
+                          legend.title=element_text(size=9)) -> p2
+
+grid.arrange(p1,p2,nrow=1, widths=c(1,0.75)) -> p3
+ggsave("main_fatalityequity.pdf", p3, units = "cm", width = 24, height = 10)
