@@ -1,0 +1,82 @@
+Outcome,TauB,Parameter set,R_init,Mean-field assumption,Compliance,  Scenario,Scenario.lab,value.lo,value,value.hi
+Fatality Incidence Increase,small,LSHTM,0.8,Household,Compliance,  C1,C1: Comparator 1\nstatus quo:\nno social bubbles,1,1,1
+Fatality Incidence Increase,small,LSHTM,0.8,Household,Compliance,  C2,C2: Comparator 2\n36 percent increase\n their random contacts,1.2117175727,1.5873184862,3.4332507414
+Fatality Incidence Increase,small,LSHTM,0.8,Household,Compliance,1,1: Households with\nprimary school age\nchildren pair up,1.0331883584,1.069393882,1.3192763882
+Fatality Incidence Increase,small,LSHTM,0.8,Household,Compliance,2,3: Households with\nchildren of any age\n pair up,1.0424577546,1.1475941315,1.5939891918
+Fatality Incidence Increase,small,LSHTM,0.8,Household,Compliance,3,4: Single occupancy\nhouseholds pair up,1.0659904633,1.0913755144,1.1640994292
+Fatality Incidence Increase,small,LSHTM,0.8,Household,Compliance,4,5: Single occupancy\nhouseholds pair up\nwith random household,1.1607748442,1.3972222643,2.0109653717
+Fatality Incidence Increase,small,LSHTM,0.8,Household,Compliance,5,8: Scenarios 1 and 3\ncombined,1.0705592378,1.196558245,1.5196703574
+Fatality Incidence Increase,small,LSHTM,0.8,Household,Compliance,6,9: All households\npair up randomly,1.302717913,1.7820690299,3.5509417527
+Fatality Incidence Increase,half,LSHTM,0.8,Household,Compliance,  C1,C1: Comparator 1\nstatus quo:\nno social bubbles,1,1,1
+Fatality Incidence Increase,half,LSHTM,0.8,Household,Compliance,  C2,C2: Comparator 2\n36 percent increase\n their random contacts,2.3055273878,6.4687234338,32.4799413568
+Fatality Incidence Increase,half,LSHTM,0.8,Household,Compliance,1,1: Households with\nprimary school age\nchildren pair up,1.1617270128,1.4894158527,2.5699556734
+Fatality Incidence Increase,half,LSHTM,0.8,Household,Compliance,2,3: Households with\nchildren of any age\n pair up,1.3092517399,1.9341846176,4.0224082226
+Fatality Incidence Increase,half,LSHTM,0.8,Household,Compliance,3,4: Single occupancy\nhouseholds pair up,1.2514024724,1.5091449793,1.8627989435
+Fatality Incidence Increase,half,LSHTM,0.8,Household,Compliance,4,5: Single occupancy\nhouseholds pair up\nwith random household,2.072146449,3.6956327982,7.0778460081
+Fatality Incidence Increase,half,LSHTM,0.8,Household,Compliance,5,8: Scenarios 1 and 3\ncombined,1.488988677,2.2132645077,4.1944813117
+Fatality Incidence Increase,half,LSHTM,0.8,Household,Compliance,6,9: All households\npair up randomly,3.0862974489,7.9075419063,20.401772101
+Fatality Incidence Increase,identical,LSHTM,0.8,Household,Compliance,  C1,C1: Comparator 1\nstatus quo:\nno social bubbles,1,1,1
+Fatality Incidence Increase,identical,LSHTM,0.8,Household,Compliance,  C2,C2: Comparator 2\n36 percent increase\n their random contacts,4.8719262332,19.4914860303,51.9838161713
+Fatality Incidence Increase,identical,LSHTM,0.8,Household,Compliance,1,1: Households with\nprimary school age\nchildren pair up,1.3731553868,2.1623816909,3.5873304118
+Fatality Incidence Increase,identical,LSHTM,0.8,Household,Compliance,2,3: Households with\nchildren of any age\n pair up,1.7120111899,3.3198572319,6.5334663629
+Fatality Incidence Increase,identical,LSHTM,0.8,Household,Compliance,3,4: Single occupancy\nhouseholds pair up,1.5817565665,2.0181031815,2.3280978349
+Fatality Incidence Increase,identical,LSHTM,0.8,Household,Compliance,4,5: Single occupancy\nhouseholds pair up\nwith random household,3.6180636718,7.4995646097,11.3676269359
+Fatality Incidence Increase,identical,LSHTM,0.8,Household,Compliance,5,8: Scenarios 1 and 3\ncombined,2.1358164054,3.8454330443,6.8899363159
+Fatality Incidence Increase,identical,LSHTM,0.8,Household,Compliance,6,9: All households\npair up randomly,7.1429470914,20.6408965144,34.070795237
+Fatality Incidence Increase,half,LSHTM,0.7,Household,Compliance,  C1,C1: Comparator 1\nstatus quo:\nno social bubbles,1,1,1
+Fatality Incidence Increase,half,LSHTM,0.7,Household,Compliance,  C2,C2: Comparator 2\n36 percent increase\n their random contacts,NaN,7.5475664667,NaN
+Fatality Incidence Increase,half,LSHTM,0.7,Household,Compliance,1,1: Households with\nprimary school age\nchildren pair up,NaN,1.5939425716,NaN
+Fatality Incidence Increase,half,LSHTM,0.7,Household,Compliance,2,3: Households with\nchildren of any age\n pair up,NaN,2.1226861214,NaN
+Fatality Incidence Increase,half,LSHTM,0.7,Household,Compliance,3,4: Single occupancy\nhouseholds pair up,NaN,1.5326950948,NaN
+Fatality Incidence Increase,half,LSHTM,0.7,Household,Compliance,4,5: Single occupancy\nhouseholds pair up\nwith random household,NaN,3.8672869105,NaN
+Fatality Incidence Increase,half,LSHTM,0.7,Household,Compliance,5,8: Scenarios 1 and 3\ncombined,NaN,2.3011103339,NaN
+Fatality Incidence Increase,half,LSHTM,0.7,Household,Compliance,6,9: All households\npair up randomly,NaN,8.678103196,NaN
+Fatality Incidence Increase,half,LSHTM,0.9,Household,Compliance,  C1,C1: Comparator 1\nstatus quo:\nno social bubbles,1,1,1
+Fatality Incidence Increase,half,LSHTM,0.9,Household,Compliance,  C2,C2: Comparator 2\n36 percent increase\n their random contacts,NaN,5.3637469426,NaN
+Fatality Incidence Increase,half,LSHTM,0.9,Household,Compliance,1,1: Households with\nprimary school age\nchildren pair up,NaN,1.4086840902,NaN
+Fatality Incidence Increase,half,LSHTM,0.9,Household,Compliance,2,3: Households with\nchildren of any age\n pair up,NaN,1.8141807273,NaN
+Fatality Incidence Increase,half,LSHTM,0.9,Household,Compliance,3,4: Single occupancy\nhouseholds pair up,NaN,1.487234039,NaN
+Fatality Incidence Increase,half,LSHTM,0.9,Household,Compliance,4,5: Single occupancy\nhouseholds pair up\nwith random household,NaN,3.4749164772,NaN
+Fatality Incidence Increase,half,LSHTM,0.9,Household,Compliance,5,8: Scenarios 1 and 3\ncombined,NaN,2.0676097616,NaN
+Fatality Incidence Increase,half,LSHTM,0.9,Household,Compliance,6,9: All households\npair up randomly,NaN,6.7565293473,NaN
+Fatality Incidence Increase,small,Warwick,0.8,Household,Compliance,  C1,C1: Comparator 1\nstatus quo:\nno social bubbles,1,1,1
+Fatality Incidence Increase,small,Warwick,0.8,Household,Compliance,  C2,C2: Comparator 2\n36 percent increase\n their random contacts,NaN,NaN,NaN
+Fatality Incidence Increase,small,Warwick,0.8,Household,Compliance,1,1: Households with\nprimary school age\nchildren pair up,NaN,NaN,NaN
+Fatality Incidence Increase,small,Warwick,0.8,Household,Compliance,2,3: Households with\nchildren of any age\n pair up,NaN,NaN,NaN
+Fatality Incidence Increase,small,Warwick,0.8,Household,Compliance,3,4: Single occupancy\nhouseholds pair up,NaN,NaN,NaN
+Fatality Incidence Increase,small,Warwick,0.8,Household,Compliance,4,5: Single occupancy\nhouseholds pair up\nwith random household,NaN,NaN,NaN
+Fatality Incidence Increase,small,Warwick,0.8,Household,Compliance,5,8: Scenarios 1 and 3\ncombined,NaN,NaN,NaN
+Fatality Incidence Increase,small,Warwick,0.8,Household,Compliance,6,9: All households\npair up randomly,NaN,NaN,NaN
+Fatality Incidence Increase,half,Warwick,0.8,Household,Compliance,  C1,C1: Comparator 1\nstatus quo:\nno social bubbles,1,1,1
+Fatality Incidence Increase,half,Warwick,0.8,Household,Compliance,  C2,C2: Comparator 2\n36 percent increase\n their random contacts,NaN,11.0631213745,NaN
+Fatality Incidence Increase,half,Warwick,0.8,Household,Compliance,1,1: Households with\nprimary school age\nchildren pair up,NaN,1.1852850592,NaN
+Fatality Incidence Increase,half,Warwick,0.8,Household,Compliance,2,3: Households with\nchildren of any age\n pair up,NaN,1.4107323857,NaN
+Fatality Incidence Increase,half,Warwick,0.8,Household,Compliance,3,4: Single occupancy\nhouseholds pair up,NaN,2.0526107835,NaN
+Fatality Incidence Increase,half,Warwick,0.8,Household,Compliance,4,5: Single occupancy\nhouseholds pair up\nwith random household,NaN,4.7809823079,NaN
+Fatality Incidence Increase,half,Warwick,0.8,Household,Compliance,5,8: Scenarios 1 and 3\ncombined,NaN,2.4001704125,NaN
+Fatality Incidence Increase,half,Warwick,0.8,Household,Compliance,6,9: All households\npair up randomly,NaN,11.4357559993,NaN
+Fatality Incidence Increase,identical,Warwick,0.8,Household,Compliance,  C1,C1: Comparator 1\nstatus quo:\nno social bubbles,1,1,1
+Fatality Incidence Increase,identical,Warwick,0.8,Household,Compliance,  C2,C2: Comparator 2\n36 percent increase\n their random contacts,NaN,NaN,NaN
+Fatality Incidence Increase,identical,Warwick,0.8,Household,Compliance,1,1: Households with\nprimary school age\nchildren pair up,NaN,NaN,NaN
+Fatality Incidence Increase,identical,Warwick,0.8,Household,Compliance,2,3: Households with\nchildren of any age\n pair up,NaN,NaN,NaN
+Fatality Incidence Increase,identical,Warwick,0.8,Household,Compliance,3,4: Single occupancy\nhouseholds pair up,NaN,NaN,NaN
+Fatality Incidence Increase,identical,Warwick,0.8,Household,Compliance,4,5: Single occupancy\nhouseholds pair up\nwith random household,NaN,NaN,NaN
+Fatality Incidence Increase,identical,Warwick,0.8,Household,Compliance,5,8: Scenarios 1 and 3\ncombined,NaN,NaN,NaN
+Fatality Incidence Increase,identical,Warwick,0.8,Household,Compliance,6,9: All households\npair up randomly,NaN,NaN,NaN
+Fatality Incidence Increase,half,LSHTM,0.8,Individual,Compliance,  C1,C1: Comparator 1\nstatus quo:\nno social bubbles,1,1,1
+Fatality Incidence Increase,half,LSHTM,0.8,Individual,Compliance,  C2,C2: Comparator 2\n36 percent increase\n their random contacts,NaN,6.5450600008,0
+Fatality Incidence Increase,half,LSHTM,0.8,Individual,Compliance,1,1: Households with\nprimary school age\nchildren pair up,NaN,1.6475687006,0
+Fatality Incidence Increase,half,LSHTM,0.8,Individual,Compliance,2,3: Households with\nchildren of any age\n pair up,NaN,2.2101958643,0
+Fatality Incidence Increase,half,LSHTM,0.8,Individual,Compliance,3,4: Single occupancy\nhouseholds pair up,NaN,1.2160114632,0
+Fatality Incidence Increase,half,LSHTM,0.8,Individual,Compliance,4,5: Single occupancy\nhouseholds pair up\nwith random household,NaN,2.3091930095,0
+Fatality Incidence Increase,half,LSHTM,0.8,Individual,Compliance,5,8: Scenarios 1 and 3\ncombined,NaN,2.0051206451,0
+Fatality Incidence Increase,half,LSHTM,0.8,Individual,Compliance,6,9: All households\npair up randomly,NaN,6.1670273534,0
+Fatality Incidence Increase,half,LSHTM,0.8,Household,Non-compliance,  C1,C1: Comparator 1\nstatus quo:\nno social bubbles,NaN,NaN,NaN
+Fatality Incidence Increase,half,LSHTM,0.8,Household,Non-compliance,  C2,C2: Comparator 2\n36 percent increase\n their random contacts,NaN,NaN,NaN
+Fatality Incidence Increase,half,LSHTM,0.8,Household,Non-compliance,1,1: Households with\nprimary school age\nchildren pair up,NaN,2.0924258621,NaN
+Fatality Incidence Increase,half,LSHTM,0.8,Household,Non-compliance,2,3: Households with\nchildren of any age\n pair up,NaN,3.0251158656,NaN
+Fatality Incidence Increase,half,LSHTM,0.8,Household,Non-compliance,3,4: Single occupancy\nhouseholds pair up,NaN,1.9132601662,NaN
+Fatality Incidence Increase,half,LSHTM,0.8,Household,Non-compliance,4,5: Single occupancy\nhouseholds pair up\nwith random household,NaN,NaN,NaN
+Fatality Incidence Increase,half,LSHTM,0.8,Household,Non-compliance,5,8: Scenarios 1 and 3\ncombined,NaN,2.5173956108,NaN
+Fatality Incidence Increase,half,LSHTM,0.8,Household,Non-compliance,6,9: All households\npair up randomly,NaN,"  19.484617518859331
+",NaN
