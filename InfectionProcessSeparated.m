@@ -45,9 +45,17 @@ Ceps(sum(B) == 0) = 1;
 
 
 
+
 for j = 1:L
-    RelInf_Vec(A==j) = RelInf(j);          
+    RelInf_Vec(A==j) = RelInf(j);   
+    RelTrans_Vec(A==j) = RelTrans(j);        
 end
+
+CR2 = Ceps.*RelTrans_Vec;
+CR1 = (RelInf_Vec./C);
+CR3 = eps*Ceps.*CR1;
+SumC = sum(Ceps);
+
   
     R = [];
     for loop=1:100
@@ -58,14 +66,16 @@ end
         
         old_n=0; n=Infect_0;
         
+        old_I = zeros(length(I),1);
+        
         %Number of Children Infected and Adults
         n_Vec = zeros(1,L);
         old_n_Vec = zeros(1,L);
         
         for j = 1:L
-           n_Vec(j) = sum(A(I==1)==j);            
         end
         
+           n_Vec(j) = sum(A(I==1)==j);            
         
         
         counter = 1;
@@ -76,15 +86,17 @@ end
         while n>old_n & counter < 10
             
             new_infections = n-old_n;
-            
             new_infections_Vec = n_Vec - old_n_Vec;
             
+            new_infections_I = I - old_I;
             
+            
+            old_I = I;
             old_n=n;
             old_n_Vec = n_Vec;
            
             %if RelInf effects rates
-            J = (1-exp(-(Ceps*eps).*(sum(Ceps.*RelTrans.*new_infections_Vec)/N).*(RelInf_Vec./C)));
+            J = (1-exp(-CR3*(sum(CR2'.*new_infections_I)/SumC)));
             
             r = rand(size(J));
             I(r<J) = 1;            
