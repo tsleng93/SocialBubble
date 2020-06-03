@@ -170,6 +170,7 @@ for i = ScenarioVec
         D3(j,i) = Deaths/length(NewM3);      
         %}
         %Scenario 4
+        %{
         NewB4 = PruneMatrixFull(B4, tauB(i), 'B', Age, RelTrans, RelInf);
         NewM4 = 1*sparse(NewH|NewB4);
         [~, RSize, Rgen, ~, Deaths] = InfectionProcessFull(NewM4, eps(i), C, 100,Age,RelTrans,RelInf, Death_Prop);
