@@ -43,7 +43,7 @@ House_Sizes = load('Census_House_Sizes.csv');
 %base parameters
 SizeBubble = 2;
 NumHouse = 10000;
-Runs = 1;
+Runs = 20;
 
 %Connor runs this one
 ScenarioVec = [1:9 11 14 20 26];
