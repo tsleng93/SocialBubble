@@ -17,9 +17,9 @@ require(gridExtra)
 ########################
 read.csv("HH.csv") %>% 
   melt(id = "Household.size") -> dt
-read.csv("Tab_RimpactMain.csv") %>%
+read.csv("Tab_RimpactMainwithc3.csv") %>%
   select(-(12:17)) %>%                            
-  rbind(read.csv("Tab_DimpactMain.csv")) %>% 
+  rbind(read.csv("Tab_DimpactMainwithC3.csv")) %>% 
   mutate(Outcome = gsub("Disease incidence increase","Increase in fatalities",Outcome)) %>%
   mutate(Outcome = gsub("Fatality Incidence Increase","Increase in fatalities",Outcome))->  dt.res    
 
@@ -67,24 +67,26 @@ dt.res %>%
 hline.dat <- data.frame(Outcome = c("Net Reproduction Number","Net Reproduction Number","Increase in fatalities"),
                         threshold = c(.8,1,1))
   
-my_breaks <- function(x) { if (max(x) < 5) c(.8,1,1.2,1.4,1.6,1.8,2) else c(1,2,3,5,10,20,30,50) }
+my_breaks <- function(x) { if (max(x) < 5) c(.8,1,1.2,1.4,1.6,1.8,2,2.5,3) else c(1,2,3,5,10,20,30,50) }
+dt.mainres$Scenario = factor(dt.mainres$Scenario, c("  C1", "  C2", "C3","1", "2","3","4","5","6"))
 
 dt.mainres %>% 
   ggplot(aes(x=Scenario, y=value, ymin=value.lo, ymax=value.hi, color=TauB)) +
     geom_hline(data = hline.dat, aes(yintercept = threshold), color = "grey", alpha=0.5, lty="dashed", lwd=1.15) +  
     geom_linerange(position = position_dodge(.5)) +
     geom_point(position = position_dodge(.5)) +
-    labs(x="", y="", color="Infection rate in\nthe bubble relative\nto houshold")+
+    labs(x="", y="", color="Infection rate in\nthe bubble relative\nto household")+
     scale_color_manual(values = c("#d1720490","#bab5b3","#2748e890"),
                        labels = c("identical (100%)", "half (50%)", "small (10%)" )) +
-    theme_light() + theme(legend.position = c(0.87, 0.45),
+    theme_light() + theme(legend.position = c(0.87, 0.65),
                           legend.background = element_rect(fill=alpha('white', 0.7)),
                           legend.title=element_text(size=9)) + 
     coord_flip() +
     scale_y_log10(breaks = my_breaks)+
     facet_grid(.~Outcome, scales = "free_x") +
     scale_x_discrete(labels = c("Scenario C1:\n(no social bubbles)",
-                                "Scenario C2:\n(more random contacts)",
+                                "Scenario C2:\n(more random\ncontacts)",
+                                "Scenario C3:\n(more community\ncontact)",
                                 "Scenario 1:\n(young children)",
                                 "Scenario 2:\n(children))",
                                 "Scenario 3:\n(Single households)",
@@ -92,6 +94,29 @@ dt.mainres %>%
                                 "Scenario 5:\n(Scenarios 1 and 3\ncombined)",
                                 "Scenario 6:\n(All households)"))
 ggsave("main_results.pdf", units = "cm", width = 18, height = 12)
+
+
+########################
+#extract effectiveness of bubbles
+########################
+
+dt.res %>% 
+  gather(SAR, value, -(Outcome:Scenario.lab)) %>%
+  select(-c("Scenario.lab")) %>%
+  filter(Scenario %in% c("  C1","  C2","C3","6")) %>%
+  spread(Scenario,value) %>%
+  mutate(C2Increase = 1-`6`/`  C2`,
+         C3Increase = 1-`6`/`C3`) -> dt.eff
+
+dt.eff %>%
+  filter(Parameter.set %in% c("LSHTM","Warwick") & 
+           R_init == .8 &
+           Mean.field.assumption == "Household" &
+           Compliance == "Compliance" &
+           Outcome == "Increase in fatalities" &
+           SAR == "value" &
+           TauB == "half")
+
 
 ########################
 #plot Tornado
