@@ -1,0 +1,91 @@
+Outcome,TauB,Parameter set,R_init,Mean-field assumption,Compliance,  Scenario,Scenario.lab,value.lo,value,value.hi
+Disease incidence increase,small,LSHTM,0.8,Household,Compliance,  C1,C1: Comparator 1\nstatus quo:\nno social bubbles,1,1,1
+Disease incidence increase,small,LSHTM,0.8,Household,Compliance,  C2,C2: Comparator 2\n36 percent increase\n their random contacts,1.382089731,1.818139112,4.072599372
+Disease incidence increase,small,LSHTM,0.8,Household,Compliance,C3,C3: Increased community transmission,1.361137316,1.835666214,4.083845573
+Disease incidence increase,small,LSHTM,0.8,Household,Compliance,1,1: Households with\nprimary school age\nchildren pair up,1.162418774,1.219843629,1.325964369
+Disease incidence increase,small,LSHTM,0.8,Household,Compliance,2,3: Households with\nchildren of any age\n pair up,1.158707843,1.252765166,1.613552942
+Disease incidence increase,small,LSHTM,0.8,Household,Compliance,3,4: Single occupancy\nhouseholds pair up,1.167874699,1.099849617,1.172535889
+Disease incidence increase,small,LSHTM,0.8,Household,Compliance,4,5: Single occupancy\nhouseholds pair up\nwith random household,1.29914513,1.507687409,2.048844311
+Disease incidence increase,small,LSHTM,0.8,Household,Compliance,5,8: Scenarios 1 and 3\ncombined,1.113375874,1.29940439,1.579008456
+Disease incidence increase,small,LSHTM,0.8,Household,Compliance,6,9: All households\npair up randomly,1.317325652,1.9183149,3.611131814
+Disease incidence increase,half,LSHTM,0.8,Household,Compliance,  C1,C1: Comparator 1\nstatus quo:\nno social bubbles,1,1,1
+Disease incidence increase,half,LSHTM,0.8,Household,Compliance,  C2,C2: unclustered contacts,2.655397064,8.451162389,40.64638798
+Disease incidence increase,half,LSHTM,0.8,Household,Compliance,C3,C3: Increased community transmission,2.789968632,9.433743215,46.87003706
+Disease incidence increase,half,LSHTM,0.8,Household,Compliance,1,1: Households with\nprimary school age\nchildren pair up,1.180750709,1.487925206,2.573487813
+Disease incidence increase,half,LSHTM,0.8,Household,Compliance,2,3: Households with\nchildren of any age\n pair up,1.196842565,1.978272266,4.093140442
+Disease incidence increase,half,LSHTM,0.8,Household,Compliance,3,4: Single occupancy\nhouseholds pair up,1.197123106,1.393654961,1.904783938
+Disease incidence increase,half,LSHTM,0.8,Household,Compliance,4,5: Single occupancy\nhouseholds pair up\nwith random household,2.048951867,3.774711777,6.980917329
+Disease incidence increase,half,LSHTM,0.8,Household,Compliance,5,8: Scenarios 1 and 3\ncombined,1.387729118,2.235166357,4.141840774
+Disease incidence increase,half,LSHTM,0.8,Household,Compliance,6,9: All households\npair up randomly,3.130716721,7.818431187,20.26156641
+Disease incidence increase,identical,LSHTM,0.8,Household,Compliance,  C1,C1: Comparator 1\nstatus quo:\nno social bubbles,1,1,1
+Disease incidence increase,identical,LSHTM,0.8,Household,Compliance,  C2,C2: Comparator 2\n36 percent increase\n their random contacts,6.91546739,26.57894315,56.61545122
+Disease incidence increase,identical,LSHTM,0.8,Household,Compliance,C3,C3: Increased community transmission,7.423727055,34.98766262,79.66215668
+Disease incidence increase,identical,LSHTM,0.8,Household,Compliance,1,1: Households with\nprimary school age\nchildren pair up,1.502605246,2.148730174,4.14799829
+Disease incidence increase,identical,LSHTM,0.8,Household,Compliance,2,3: Households with\nchildren of any age\n pair up,1.922242015,3.296703796,7.479673006
+Disease incidence increase,identical,LSHTM,0.8,Household,Compliance,3,4: Single occupancy\nhouseholds pair up,1.72403177,2.056331079,2.66552465
+Disease incidence increase,identical,LSHTM,0.8,Household,Compliance,4,5: Single occupancy\nhouseholds pair up\nwith random household,4.010962819,7.442195359,12.54860558
+Disease incidence increase,identical,LSHTM,0.8,Household,Compliance,5,8: Scenarios 1 and 3\ncombined,2.377736031,3.935129118,7.806998385
+Disease incidence increase,identical,LSHTM,0.8,Household,Compliance,6,9: All households\npair up randomly,7.731565718,20.33081534,38.43461307
+Disease incidence increase,half,LSHTM,0.7,Household,Compliance,  C1,C1: Comparator 1\nstatus quo:\nno social bubbles,1,1,1
+Disease incidence increase,half,LSHTM,0.7,Household,Compliance,  C2,C2: unclustered contacts,NaN,11.82115356,NaN
+Disease incidence increase,half,LSHTM,0.7,Household,Compliance,C3,C3: Increased community transmission,NaN,14.61394874,NaN
+Disease incidence increase,half,LSHTM,0.7,Household,Compliance,1,1: Households with\nprimary school age\nchildren pair up,NaN,1.723735463,NaN
+Disease incidence increase,half,LSHTM,0.7,Household,Compliance,2,3: Households with\nchildren of any age\n pair up,NaN,2.436205161,NaN
+Disease incidence increase,half,LSHTM,0.7,Household,Compliance,3,4: Single occupancy\nhouseholds pair up,NaN,1.887349236,NaN
+Disease incidence increase,half,LSHTM,0.7,Household,Compliance,4,5: Single occupancy\nhouseholds pair up\nwith random household,NaN,4.451460756,NaN
+Disease incidence increase,half,LSHTM,0.7,Household,Compliance,5,8: Scenarios 1 and 3\ncombined,NaN,2.461128919,NaN
+Disease incidence increase,half,LSHTM,0.7,Household,Compliance,6,9: All households\npair up randomly,NaN,10.24036365,NaN
+Disease incidence increase,half,LSHTM,0.9,Household,Compliance,  C1,C1: Comparator 1\nstatus quo:\nno social bubbles,1,1,1
+Disease incidence increase,half,LSHTM,0.9,Household,Compliance,  C2,C2: unclustered contacts,NaN,7.01042132,NaN
+Disease incidence increase,half,LSHTM,0.9,Household,Compliance,C3,C3: Increased community transmission,NaN,7.354232135,NaN
+Disease incidence increase,half,LSHTM,0.9,Household,Compliance,1,1: Households with\nprimary school age\nchildren pair up,NaN,1.452858952,NaN
+Disease incidence increase,half,LSHTM,0.9,Household,Compliance,2,3: Households with\nchildren of any age\n pair up,NaN,1.886472629,NaN
+Disease incidence increase,half,LSHTM,0.9,Household,Compliance,3,4: Single occupancy\nhouseholds pair up,NaN,1.526373654,NaN
+Disease incidence increase,half,LSHTM,0.9,Household,Compliance,4,5: Single occupancy\nhouseholds pair up\nwith random household,NaN,3.579225487,NaN
+Disease incidence increase,half,LSHTM,0.9,Household,Compliance,5,8: Scenarios 1 and 3\ncombined,NaN,2.144489616,NaN
+Disease incidence increase,half,LSHTM,0.9,Household,Compliance,6,9: All households\npair up randomly,NaN,6.942118158,NaN
+Disease incidence increase,small,Warwick,0.8,Household,Compliance,  C1,C1: Comparator 1\nstatus quo:\nno social bubbles,1,1,1
+Disease incidence increase,small,Warwick,0.8,Household,Compliance,  C2,C2: unclustered contacts,NaN,NaN,NaN
+Disease incidence increase,small,Warwick,0.8,Household,Compliance,C3,C3: Increased community transmission,NaN,NaN,NaN
+Disease incidence increase,small,Warwick,0.8,Household,Compliance,1,1: Households with\nprimary school age\nchildren pair up,NaN,NaN,NaN
+Disease incidence increase,small,Warwick,0.8,Household,Compliance,2,3: Households with\nchildren of any age\n pair up,NaN,NaN,NaN
+Disease incidence increase,small,Warwick,0.8,Household,Compliance,3,4: Single occupancy\nhouseholds pair up,NaN,NaN,NaN
+Disease incidence increase,small,Warwick,0.8,Household,Compliance,4,5: Single occupancy\nhouseholds pair up\nwith random household,NaN,NaN,NaN
+Disease incidence increase,small,Warwick,0.8,Household,Compliance,5,8: Scenarios 1 and 3\ncombined,NaN,NaN,NaN
+Disease incidence increase,small,Warwick,0.8,Household,Compliance,6,9: All households\npair up randomly,NaN,NaN,NaN
+Disease incidence increase,half,Warwick,0.8,Household,Compliance,  C1,C1: Comparator 1\nstatus quo:\nno social bubbles,1,1,1
+Disease incidence increase,half,Warwick,0.8,Household,Compliance,  C2,C2: unclustered contacts,NaN,15.51579465,NaN
+Disease incidence increase,half,Warwick,0.8,Household,Compliance,C3,C3: Increased community transmission,NaN,35.26721099,NaN
+Disease incidence increase,half,Warwick,0.8,Household,Compliance,1,1: Households with\nprimary school age\nchildren pair up,NaN,1.251435196,NaN
+Disease incidence increase,half,Warwick,0.8,Household,Compliance,2,3: Households with\nchildren of any age\n pair up,NaN,1.30973302,NaN
+Disease incidence increase,half,Warwick,0.8,Household,Compliance,3,4: Single occupancy\nhouseholds pair up,NaN,1.929087918,NaN
+Disease incidence increase,half,Warwick,0.8,Household,Compliance,4,5: Single occupancy\nhouseholds pair up\nwith random household,NaN,4.72259048,NaN
+Disease incidence increase,half,Warwick,0.8,Household,Compliance,5,8: Scenarios 1 and 3\ncombined,NaN,2.268715603,NaN
+Disease incidence increase,half,Warwick,0.8,Household,Compliance,6,9: All households\npair up randomly,NaN,11.29036421,NaN
+Disease incidence increase,identical,Warwick,0.8,Household,Compliance,  C1,C1: Comparator 1\nstatus quo:\nno social bubbles,1,1,1
+Disease incidence increase,identical,Warwick,0.8,Household,Compliance,  C2,C2: unclustered contacts,NaN,NaN,NaN
+Disease incidence increase,identical,Warwick,0.8,Household,Compliance,C3,C3: Increased community transmission,NaN,NaN,NaN
+Disease incidence increase,identical,Warwick,0.8,Household,Compliance,1,1: Households with\nprimary school age\nchildren pair up,NaN,NaN,NaN
+Disease incidence increase,identical,Warwick,0.8,Household,Compliance,2,3: Households with\nchildren of any age\n pair up,NaN,NaN,NaN
+Disease incidence increase,identical,Warwick,0.8,Household,Compliance,3,4: Single occupancy\nhouseholds pair up,NaN,NaN,NaN
+Disease incidence increase,identical,Warwick,0.8,Household,Compliance,4,5: Single occupancy\nhouseholds pair up\nwith random household,NaN,NaN,NaN
+Disease incidence increase,identical,Warwick,0.8,Household,Compliance,5,8: Scenarios 1 and 3\ncombined,NaN,NaN,NaN
+Disease incidence increase,identical,Warwick,0.8,Household,Compliance,6,9: All households\npair up randomly,NaN,NaN,NaN
+Disease incidence increase,half,LSHTM,0.8,Individual,Compliance,  C1,C1: Comparator 1\nstatus quo:\nno social bubbles,1,1,1
+Disease incidence increase,half,LSHTM,0.8,Individual,Compliance,  C2,C2: unclustered contacts,NaN,9.884014406,NaN
+Disease incidence increase,half,LSHTM,0.8,Individual,Compliance,C3,C3: Increased community transmission,NaN,12.06703288,NaN
+Disease incidence increase,half,LSHTM,0.8,Individual,Compliance,1,1: Households with\nprimary school age\nchildren pair up,NaN,1.853406314,NaN
+Disease incidence increase,half,LSHTM,0.8,Individual,Compliance,2,3: Households with\nchildren of any age\n pair up,NaN,2.569589649,NaN
+Disease incidence increase,half,LSHTM,0.8,Individual,Compliance,3,4: Single occupancy\nhouseholds pair up,NaN,1.113334525,NaN
+Disease incidence increase,half,LSHTM,0.8,Individual,Compliance,4,5: Single occupancy\nhouseholds pair up\nwith random household,NaN,2.568232521,NaN
+Disease incidence increase,half,LSHTM,0.8,Individual,Compliance,5,8: Scenarios 1 and 3\ncombined,NaN,2.233724461,NaN
+Disease incidence increase,half,LSHTM,0.8,Individual,Compliance,6,9: All households\npair up randomly,NaN,6.859740121,NaN
+Disease incidence increase,half,LSHTM,0.8,Household,Non-compliance,  C1,C1: Comparator 1\nstatus quo:\nno social bubbles,1,1,1
+Disease incidence increase,half,LSHTM,0.8,Household,Non-compliance,  C2,C2: unclustered contacts,NaN,0,NaN
+Disease incidence increase,half,LSHTM,0.8,Household,Non-compliance,C3,C3: Increased community transmission,NaN,0,NaN
+Disease incidence increase,half,LSHTM,0.8,Household,Non-compliance,1,1: Households with\nprimary school age\nchildren pair up,NaN,2.034580105,NaN
+Disease incidence increase,half,LSHTM,0.8,Household,Non-compliance,2,3: Households with\nchildren of any age\n pair up,NaN,3.06742907,NaN
+Disease incidence increase,half,LSHTM,0.8,Household,Non-compliance,3,4: Single occupancy\nhouseholds pair up,NaN,2.04423343,NaN
+Disease incidence increase,half,LSHTM,0.8,Household,Non-compliance,4,5: Single occupancy\nhouseholds pair up\nwith random household,NaN,7.302147334,NaN
+Disease incidence increase,half,LSHTM,0.8,Household,Non-compliance,5,8: Scenarios 1 and 3\ncombined,NaN,3.751438876,NaN
+Disease incidence increase,half,LSHTM,0.8,Household,Non-compliance,6,9: All households\npair up randomly,NaN,19.14477331,NaN

@@ -17,9 +17,9 @@ require(gridExtra)
 ########################
 read.csv("HH.csv") %>% 
   melt(id = "Household.size") -> dt
-read.csv("Tab_RimpactMainwithc3.csv") %>%
+read.csv("Tab_RimpactJune5.csv") %>%
   select(-(12:17)) %>%                            
-  rbind(read.csv("Tab_DimpactMainwithC3.csv")) %>% 
+  rbind(read.csv("Tab_DimpactJune5.csv")) %>% 
   mutate(Outcome = gsub("Disease incidence increase","Increase in fatalities",Outcome)) %>%
   mutate(Outcome = gsub("Fatality Incidence Increase","Increase in fatalities",Outcome))->  dt.res    
 
@@ -75,7 +75,7 @@ dt.mainres %>%
     geom_hline(data = hline.dat, aes(yintercept = threshold), color = "grey", alpha=0.5, lty="dashed", lwd=1.15) +  
     geom_linerange(position = position_dodge(.5)) +
     geom_point(position = position_dodge(.5)) +
-    labs(x="", y="", color="Infection rate in\nthe bubble relative\nto household")+
+    labs(x="", y="", color="Transmission rate in\nthe bubble relative\nto household")+
     scale_color_manual(values = c("#d1720490","#bab5b3","#2748e890"),
                        labels = c("identical (100%)", "half (50%)", "small (10%)" )) +
     theme_light() + theme(legend.position = c(0.87, 0.65),
@@ -117,11 +117,13 @@ dt.eff %>%
            SAR == "value" &
            TauB == "half")
 
+dt.eff$C3Increase %>% summary
+dt.eff$C2Increase %>% summary
 
 ########################
 #plot Tornado
 ########################
-for(i in 1:6){
+for(i in c("1","2","3","4","5","6","  C2","C3")){
   data.frame(list(Outcome=NA, 
                   Scenario=NA, 
                   val.lo=1, 
@@ -180,6 +182,18 @@ for(i in 1:6){
   hline.dat <- data.frame(Outcome = c("Net Reproduction Number","Increase in fatalities"),
                           value = dt.res %>% filter(Scenario==i, Parameter.set=="LSHTM", Compliance=="Compliance", Mean.field.assumption=="Household",R_init==.8, TauB=="half") %>% select(value) %>% c())
   my_breaks <- function(x) { if (max(x) > 2.5) c(1.1,1.33,round(hline.dat[2,2],2),1.66,2,2.33) else c(0.75,.8,round(hline.dat[1,2],2),.9,.95,1,1.1) }
+  my_labs <- c("Community\ntransmission",
+               "Adherence",
+               "Current net\nreproduction number",
+               "Household\nattack rate",
+               "Susceptibility and\ninfectivity",
+               "Transmissibility\nwithin bubbles")
+  
+  if(i %in% c("  C2", "C3")){
+    dt.tornado %>%
+      filter(Scenario != "Compliance") -> dt.tornado
+    my_labs = my_labs[-2]
+  }
   
   dt.tornado %>%
     ggplot(aes(x = Scenario)) +
@@ -190,13 +204,8 @@ for(i in 1:6){
       coord_flip() +
       xlab("")+
       theme_light()+
-      scale_x_discrete(labels = c("Community\ntransmission",
-                                  "Adherence",
-                                  "Current net\nreproduction number",
-                                  "Household\nattack rate",
-                                  "Susceptibility and\ninfectivity",
-                                  "Transmissibility\nwithin bubbles")) +
-    scale_y_log10(breaks = my_breaks)
+      scale_x_discrete(labels = my_labs) +
+    scale_y_log10()#breaks = my_breaks)
   ggsave(paste0("main_tornado_Scenario_",i,".pdf"), units = "cm", width = 17, height = 8)
 }
 
