@@ -117,8 +117,6 @@ dt.eff %>%
            SAR == "value" &
            TauB == "half")
 
-dt.eff$C3Increase %>% summary
-dt.eff$C2Increase %>% summary
 
 ########################
 #plot Tornado
