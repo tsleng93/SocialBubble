@@ -4,7 +4,7 @@ This repository contains the underlying code and functions used in the paper "Th
 Covid-19 lockdown exit strategy, a modelling study", by Trystan Leng*, Connor White, Joe Hilton, Adam J Kucharski, 
 Lorenzo Pellis, Helena Stage, Nicholas Davies, CMMID nCov working group, Matt Keeling & Stefan Flasche.
 
-Trystan Leng - Corresponding Author, email: t.leng@warwick.ac.uk
+Corresponding author: Trystan Leng, email: t.leng@warwick.ac.uk
 
 Underlying code and functions are written in matlab, and visualisations are written in matlab or R.
 
