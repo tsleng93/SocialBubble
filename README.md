@@ -10,8 +10,7 @@ Underlying code and functions are written in matlab, and visualisations are writ
 
 # Regenerating results
 
-To generate the underlying data for the plots in Figures 2, 4, and S3-7, users should run the code 'FinalCode.m', then 
-'NonComplianceCode.m'. After running both, users should then run 'DataMaker.m' to produce the underlying .csv files. 
+To generate the underlying data for the plots in Figures 2, 4, and S3-7, users should run the code 'MainCode.m'. After running this, users should then run 'DataMaker.m' to produce the underlying .csv files. 
 
 To generate the underlying data for the plots in Figure 3, users should run the code 'figure3Code.m', which runs the code
 and produces the underlying .csv files.
@@ -29,7 +28,7 @@ consider households and the effect of introducing bubbles to an epidemic, and co
 and older adults), our simulation methods are general, and could be used for an arbitrary probability matrix with an arbitrary 
 number of risk classes. 
 
-For a description of the underlying functions of the model, see the pdf file 'UnderlyingFunctions.pdf'
+For a description of the underlying functions of the model, see the pdf file 'UnderlyingFunctions.pdf'.
 
-For a brief vignette on how to use the functions described in this repository, see the pdf file 'Vignette.pdf'
+For a brief vignette on how to use the functions described in this repository, see the pdf file 'Vignette.pdf'.
 
