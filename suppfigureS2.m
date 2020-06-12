@@ -18,7 +18,7 @@ load('PaperHouseholdworkspace.mat');
 for j = 1:Runs
   tic  
   for i = 1:21
-        Bs = BubbleNonCompliance(B, 0, (i-1)*0.05);
+        Bs = PartialBubble(B, 0, (i-1)*0.05);
             
         NewH = PruneMatrixFull(H, tauH, 'H',  Age, RelTrans, RelInf);
         NewB1 = PruneMatrixFull(Bs, tauB(1), 'B', Age, RelTrans, RelInf);
