@@ -23,7 +23,7 @@ function [M, B, C, Age, BH, SizeHouse, TypeHouse, Position] = HouseholdMakerAge(
 %   - B is the adjacency matrix for bubble connections where the bubbles
 %   are formed with SizeBubble number of houses.
 %   - C is a vector which is the size of house each individual belongs to.
-%   - Age is a vector which conatains what age group each individual
+%   - Age is a vector which contains what age group each individual
 %   belongs to in the population.
 %   - BH is the adjacency matrix for bubble connections where the first
 %   half of houses form bubbles with SizeBubble number of houses and the 
