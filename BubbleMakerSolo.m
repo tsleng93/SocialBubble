@@ -1,8 +1,9 @@
 function B = BubbleMakerSolo(M, maxnum)
 
 %This function forms adjacency matrix for bubble connections. It takes the
-%household connection matrix and will create bubbles which are formed of
-%houses which are of size equal to or smaller than the number maxnum
+%household connection matrix and will create bubbles for all households
+%which are of size less than or equal to maxnum, who form bubbles with
+%other households at random across the population.
 
 
 %Input:
@@ -16,7 +17,7 @@ function B = BubbleMakerSolo(M, maxnum)
 %Note: M and B are N x N matrices where N is the population size.
 
 %Authors: Trystan Leng and Connor White
-%Last update 29/05/2020.
+%Last update 12/06/2020.
 
 
 B = sparse(zeros(length(M)));
