@@ -1,14 +1,12 @@
 function [Mnew, Phi] = RewireMatrix2(M,p)
 
 %This function takes an adjacency matrix M and recconects a number of edges
-%that is proprotional to the value p. In this case M
-%is eiher a adjacency matrix for household connections or bubble 
-%connections.
-
+%that is proprotional to the value p. M is either an adjacency matrix for 
+%household connections or bubble connections.
 
 %Input:
 %   - M is the adjacency matrix for the household or bubble contacts.
-%   - p is the proportion of connections we want to recconnect. 
+%   - p is the proportion of connections we want to reconnect. 
 
 %Output:
 %   - NewM is the adjacency matrix after it has been pruned.
