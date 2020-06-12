@@ -3,7 +3,7 @@ function B = BubbleMakerSolo2(M, maxnum, d)
 %This function forms adjacency matrix for bubble connections. It takes the
 %household connection matrix and will create bubbles for all households
 %which are of size less than or equal to maxnum, who form bubbles with
-%other households at random across the population %for the first (d*100)% of
+%other households at random across the population for the first (d*100)% of
 %the population.
 
 %Input:
