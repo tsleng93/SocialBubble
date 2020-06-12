@@ -6,15 +6,15 @@ function [EpiSize, RSize, Rgen, Igen, Deaths, Indiv_Infected] = InfectionProcess
 
 
 %Input:
-%   - M is the adjacency matrix on which has been pruned.
+%   - M is a pruned adjacency matrix.
 %   - eps is the community infection pressure transmission rate.
-%   - C is a vector which conatains the size of household each indiviual
+%   - C is a vector which contains the size of household each individual
 %   belongs to.
-%   - Infect_0 is the intitial number of infected people when we start the
+%   - Infect_0 is the initial number of infected people when we start the
 %   simulation.
 %   - A is a vector which store the age group each individual in the
 %   population belongs to.
-%   - RelTrans scales the the rate an individual transmits infection, 
+%   - RelTrans scales the rate an individual transmits infection, 
 %   dependent on their age group.
 %   - RelInf scales the rate of transmission to an individual (i.e. their 
 %   rate of infection) dependent on their age group.
