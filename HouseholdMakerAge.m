@@ -27,11 +27,11 @@ function [M, B, C, Age, BH, SizeHouse, TypeHouse, Position] = HouseholdMakerAge(
 %   belongs to in the population.
 %   - BH is the adjacency matrix for bubble connections where the first
 %   half of houses form bubbles with SizeBubble number of houses and the 
-%   second half od houses form bubbles with SizeBubble2 number of houses.
+%   second half of houses form bubbles with SizeBubble2 number of houses.
 %   - SizeHouse is a vector that stores the size of each house, and the
 %   number of elements is the number of houses.
-%   - TypeHouse stores whether or not a house contains a child of <10 or
-%   <20 or contains no children.
+%   - TypeHouse stores whether or not a house contains a child of <10 (denoted
+%    by 1), a child <20  (denoted by 2) or contains no children (denoted by 0).
 %   - position is a vector that stores the position in the population of 
 %   the first member of the household.
 
