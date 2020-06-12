@@ -2,7 +2,7 @@ function [NewM, SAR] = PruneMatrixFull(M,tau, Type, A, RelTrans, RelInf)
 
 
 %This function takes an adjacency matrix M and removes edges at a
-%probability which is dependent on individuals age groups. In this case M
+%probability dependeant on individuals' age groups. In this case M
 %is eiher a adjacency matrix for household connections or bubble 
 %connections.
 
