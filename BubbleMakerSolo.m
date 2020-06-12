@@ -8,7 +8,7 @@ function B = BubbleMakerSolo(M, maxnum)
 
 %Input:
 %   - M is the adjacency matrix for household connections.
-%   - maxnum is the upper limit we set for hosuehold sizes that will form
+%   - maxnum is the upper limit we set for household sizes that will form
 %   bubbles.
 
 %Output:
