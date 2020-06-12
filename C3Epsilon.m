@@ -20,8 +20,6 @@ function [eps2] = C3Epsilon(B, C, Age, RelTrans, RelInf, tauB, eps)
 
 %Output:
 %   - eps2 is the new mean-field rate of transmission for C3
-%   - 
-
 
 %Authors: Trystan Leng and Connor White
 %Last update 12/06/2020.
