@@ -15,10 +15,17 @@ RelTrans = ones(1,9);
 
 load('PaperHouseholdworkspace.mat');
 
+
+[x,y] = find(B2);
+
 for j = 1:Runs
   tic  
   for i = 1:21
-        Bs = PartialBubble(B, 0, (i-1)*0.05);
+        
+        Bs = B;
+        x2 = x(x> d*length(B) & y > d*length(B));
+        y2 = y(x > d*length(B) & y > d*length(B));
+        Bs(x2,y2) = 0;
             
         NewH = PruneMatrixFull(H, tauH, 'H',  Age, RelTrans, RelInf);
         NewB1 = PruneMatrixFull(Bs, tauB(1), 'B', Age, RelTrans, RelInf);
