@@ -1,6 +1,6 @@
 function B = NonAdherenceBubble(H, TypeorSize, Position, d)
 
-%This function forms and adjacency matrix for Bubble connections. The
+%This function forms an adjacency matrix for Bubble connections. The
 %bubbles are formed from households that either are of size 1, or contain a
 %child of <10 years of age.
 
