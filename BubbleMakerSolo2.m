@@ -1,11 +1,25 @@
 function B = BubbleMakerSolo2(M, maxnum, d)
 
-%Function creates a bubble joining anyone in a household <= maxnum to another household
+%This function forms adjacency matrix for bubble connections. It takes the
+%household connection matrix and will create bubbles for all households
+%which are of size less than or equal to maxnum, who form bubbles with
+%other households at random across the population %for the first (d*100)% of
+%the population.
 
-%maxnum is max number of people in house to allow them to join somebody else's
-%household
+%Input:
+%   - M is the adjacency matrix for household connections.
+%   - maxnum is the upper limit we set for household sizes that will form
+%   bubbles.
+%   - d is the proportion of the proportion of the population who form
+%   bubbles, provided they are eligible.
 
-%d is the proportion of individuals forming an additional bubble
+%Output:
+%   - B is the adjacency matrix for bubble connections.
+
+%Note: M and B are N x N matrices where N is the population size.
+
+%Authors: Trystan Leng and Connor White
+%Last update 12/06/2020.
 
 B = sparse(zeros(length(M)));
 
