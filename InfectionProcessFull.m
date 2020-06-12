@@ -14,7 +14,7 @@ function [EpiSize, RSize, Rgen, Igen, Deaths] = InfectionProcessFull(M, eps, C, 
 %   simulation.
 %   - A is a vector which store the age group each individual in the
 %   population belongs to.
-%   - RelTrans scales the the rate an individual transmits infection, 
+%   - RelTrans scales the rate an individual transmits infection, 
 %   dependent on their age group.
 %   - RelInf scales the rate of transmission to an individual (i.e. their 
 %   rate of infection) dependent on their age group.
