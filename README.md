@@ -1,7 +1,9 @@
 # SocialBubble
 
-This repository contains the underlying code and functions used in the paper "The effectiveness of social bubbles as part of a Covid-19 lockdown exit strategy, a modelling study", by Trystan Leng*, Connor White, Joe Hilton, Adam J Kucharski, 
+This repository contains the underlying code and functions used in the paper ["The effectiveness of social bubbles as part of a Covid-19 lockdown exit strategy, a modelling study"] (https://www.medrxiv.org/content/10.1101/2020.06.05.20123448v1), by Trystan Leng*, Connor White, Joe Hilton, Adam J Kucharski, 
 Lorenzo Pellis, Helena Stage, Nicholas Davies, CMMID nCov working group, Matt Keeling & Stefan Flasche.
+
+
 
 Corresponding author: Trystan Leng, email: t.leng@warwick.ac.uk
 
@@ -14,7 +16,7 @@ To generate the underlying data for the plots in Figures 2, 4, and S3-7, users s
 To generate the underlying data for the plots in Figure 3, users should run the code 'figure3Code.m', which runs the code
 and produces the underlying .csv files.
 
-The R code 'X.r' can be run as it is in order to generate the exact plots of Figures 1-4 and S3-7. To generate analogous plots from regenerated data, the .csv files should be amended, with those generated from 'MainCode.m' and 'figure3Code.m'
+The R code 'plots.r' can be run as it is in order to generate the exact plots of Figures 1-4 and S3-7. To generate analogous plots from regenerated data, the .csv files should be amended, with those generated from 'MainCode.m' and 'figure3Code.m'
 
 To generate the data and plots for Supplementary Figure S1, users should run the code 'suppfigureS1.m'
 
