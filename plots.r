@@ -17,9 +17,10 @@ require(gridExtra)
 ########################
 read.csv("HH.csv") %>% 
   melt(id = "Household.size") -> dt
-read.csv("Tab_RimpactJune5.csv") %>%
+read.csv("Tab_RimpactJune23.csv") %>%
   select(-(12:17)) %>%                            
-  rbind(read.csv("Tab_DimpactJune5.csv")) %>% 
+  rbind(read.csv("Tab_DimpactJune23.csv") %>%
+          mutate(Outcome = "Disease incidence increase")) %>% 
   mutate(Outcome = gsub("Disease incidence increase","Increase in fatalities",Outcome)) %>%
   mutate(Outcome = gsub("Fatality Incidence Increase","Increase in fatalities",Outcome))->  dt.res    
 
