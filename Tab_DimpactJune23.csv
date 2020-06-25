@@ -1,0 +1,100 @@
+Outcome,TauB,Parameter set,R_init,Mean-field assumption,Compliance,  Scenario,Scenario.lab,value.lo,value,value.hi
+Net Reproduction Number,small,LSHTM,0.8,Household,Compliance,  C1,C1: Comparator 1\nstatus quo:\nno social bubbles,1,1,1
+Net Reproduction Number,small,LSHTM,0.8,Household,Compliance,  C2,C2: Comparator 2\n36 percent increase\n their random contacts,1.3820897305,1.8181391124,4.0725993719
+Net Reproduction Number,small,LSHTM,0.8,Household,Compliance,C3,C3: Increased community transmission,1.3611373162,1.8356662136,4.0838455728
+Net Reproduction Number,small,LSHTM,0.8,Household,Compliance,1,1: Households with\nprimary school age\nchildren pair up,1.1624187742,1.2198436291,1.3259643693
+Net Reproduction Number,small,LSHTM,0.8,Household,Compliance,2,3: Households with\nchildren of any age\n pair up,1.1587078433,1.2527651663,1.6135529421
+Net Reproduction Number,small,LSHTM,0.8,Household,Compliance,3,4: Single occupancy\nhouseholds pair up,1.1678746989,1.0998496169,1.172535889
+Net Reproduction Number,small,LSHTM,0.8,Household,Compliance,4,5: Single occupancy\nhouseholds pair up\nwith random household,1.171703294,1.3745559387,2.0054547524
+Net Reproduction Number,small,LSHTM,0.8,Household,Compliance,5,8: Scenarios 1 and 3\ncombined,1.1133758738,1.2994043898,1.5790084556
+Net Reproduction Number,small,LSHTM,0.8,Household,Compliance,6,9: All households\npair up randomly,1.3173256515,1.9183148997,3.6111318136
+Net Reproduction Number,half,LSHTM,0.8,Household,Compliance,  C1,C1: Comparator 1\nstatus quo:\nno social bubbles,1,1,1
+Net Reproduction Number,half,LSHTM,0.8,Household,Compliance,  C2,C2: unclustered contacts,2.6553970637,8.4511623888,40.6463879818
+Net Reproduction Number,half,LSHTM,0.8,Household,Compliance,C3,C3: Increased community transmission,2.7899686315,9.4337432148,46.8700370593
+Net Reproduction Number,half,LSHTM,0.8,Household,Compliance,1,1: Households with\nprimary school age\nchildren pair up,1.1807507094,1.4879252061,2.5734878125
+Net Reproduction Number,half,LSHTM,0.8,Household,Compliance,2,3: Households with\nchildren of any age\n pair up,1.1968425652,1.9782722657,4.093140442
+Net Reproduction Number,half,LSHTM,0.8,Household,Compliance,3,4: Single occupancy\nhouseholds pair up,1.1971231063,1.3936549609,1.9047839379
+Net Reproduction Number,half,LSHTM,0.8,Household,Compliance,4,5: Single occupancy\nhouseholds pair up\nwith random household,2.0134578409,3.5965205428,6.8373576854
+Net Reproduction Number,half,LSHTM,0.8,Household,Compliance,5,8: Scenarios 1 and 3\ncombined,1.3877291178,2.2351663568,4.141840774
+Net Reproduction Number,half,LSHTM,0.8,Household,Compliance,6,9: All households\npair up randomly,3.1307167208,7.8184311871,20.2615664094
+Net Reproduction Number,identical,LSHTM,0.8,Household,Compliance,  C1,C1: Comparator 1\nstatus quo:\nno social bubbles,1,1,1
+Net Reproduction Number,identical,LSHTM,0.8,Household,Compliance,  C2,C2: Comparator 2\n36 percent increase\n their random contacts,6.9154673902,26.5789431513,56.6154512162
+Net Reproduction Number,identical,LSHTM,0.8,Household,Compliance,C3,C3: Increased community transmission,7.4237270546,34.987662615,79.6621566751
+Net Reproduction Number,identical,LSHTM,0.8,Household,Compliance,1,1: Households with\nprimary school age\nchildren pair up,1.5026052457,2.1487301738,4.1479982902
+Net Reproduction Number,identical,LSHTM,0.8,Household,Compliance,2,3: Households with\nchildren of any age\n pair up,1.9222420148,3.2967037956,7.4796730062
+Net Reproduction Number,identical,LSHTM,0.8,Household,Compliance,3,4: Single occupancy\nhouseholds pair up,1.7240317695,2.056331079,2.6655246501
+Net Reproduction Number,identical,LSHTM,0.8,Household,Compliance,4,5: Single occupancy\nhouseholds pair up\nwith random household,3.485451282,7.3824724754,11.7615245346
+Net Reproduction Number,identical,LSHTM,0.8,Household,Compliance,5,8: Scenarios 1 and 3\ncombined,2.3777360308,3.9351291175,7.8069983852
+Net Reproduction Number,identical,LSHTM,0.8,Household,Compliance,6,9: All households\npair up randomly,7.7315657175,20.3308153394,38.4346130653
+Net Reproduction Number,half,LSHTM,0.7,Household,Compliance,  C1,C1: Comparator 1\nstatus quo:\nno social bubbles,1,1,1
+Net Reproduction Number,half,LSHTM,0.7,Household,Compliance,  C2,C2: unclustered contacts,NaN,11.8211535628,NaN
+Net Reproduction Number,half,LSHTM,0.7,Household,Compliance,C3,C3: Increased community transmission,NaN,14.6139487376,NaN
+Net Reproduction Number,half,LSHTM,0.7,Household,Compliance,1,1: Households with\nprimary school age\nchildren pair up,NaN,1.7237354632,NaN
+Net Reproduction Number,half,LSHTM,0.7,Household,Compliance,2,3: Households with\nchildren of any age\n pair up,NaN,2.4362051611,NaN
+Net Reproduction Number,half,LSHTM,0.7,Household,Compliance,3,4: Single occupancy\nhouseholds pair up,NaN,1.8873492361,NaN
+Net Reproduction Number,half,LSHTM,0.7,Household,Compliance,4,5: Single occupancy\nhouseholds pair up\nwith random household,NaN,3.753698493,NaN
+Net Reproduction Number,half,LSHTM,0.7,Household,Compliance,5,8: Scenarios 1 and 3\ncombined,NaN,2.4611289185,NaN
+Net Reproduction Number,half,LSHTM,0.7,Household,Compliance,6,9: All households\npair up randomly,NaN,10.2403636478,NaN
+Net Reproduction Number,half,LSHTM,0.9,Household,Compliance,  C1,C1: Comparator 1\nstatus quo:\nno social bubbles,1,1,1
+Net Reproduction Number,half,LSHTM,0.9,Household,Compliance,  C2,C2: unclustered contacts,NaN,7.0104213196,NaN
+Net Reproduction Number,half,LSHTM,0.9,Household,Compliance,C3,C3: Increased community transmission,NaN,7.3542321351,NaN
+Net Reproduction Number,half,LSHTM,0.9,Household,Compliance,1,1: Households with\nprimary school age\nchildren pair up,NaN,1.4528589518,NaN
+Net Reproduction Number,half,LSHTM,0.9,Household,Compliance,2,3: Households with\nchildren of any age\n pair up,NaN,1.8864726288,NaN
+Net Reproduction Number,half,LSHTM,0.9,Household,Compliance,3,4: Single occupancy\nhouseholds pair up,NaN,1.5263736539,NaN
+Net Reproduction Number,half,LSHTM,0.9,Household,Compliance,4,5: Single occupancy\nhouseholds pair up\nwith random household,NaN,3.3735958168,NaN
+Net Reproduction Number,half,LSHTM,0.9,Household,Compliance,5,8: Scenarios 1 and 3\ncombined,NaN,2.1444896162,NaN
+Net Reproduction Number,half,LSHTM,0.9,Household,Compliance,6,9: All households\npair up randomly,NaN,6.9421181576,NaN
+Net Reproduction Number,small,Warwick,0.8,Household,Compliance,  C1,C1: Comparator 1\nstatus quo:\nno social bubbles,1,1,1
+Net Reproduction Number,small,Warwick,0.8,Household,Compliance,  C2,C2: unclustered contacts,NaN,NaN,NaN
+Net Reproduction Number,small,Warwick,0.8,Household,Compliance,C3,C3: Increased community transmission,NaN,NaN,NaN
+Net Reproduction Number,small,Warwick,0.8,Household,Compliance,1,1: Households with\nprimary school age\nchildren pair up,NaN,NaN,NaN
+Net Reproduction Number,small,Warwick,0.8,Household,Compliance,2,3: Households with\nchildren of any age\n pair up,NaN,NaN,NaN
+Net Reproduction Number,small,Warwick,0.8,Household,Compliance,3,4: Single occupancy\nhouseholds pair up,NaN,NaN,NaN
+Net Reproduction Number,small,Warwick,0.8,Household,Compliance,4,5: Single occupancy\nhouseholds pair up\nwith random household,NaN,NaN,NaN
+Net Reproduction Number,small,Warwick,0.8,Household,Compliance,5,8: Scenarios 1 and 3\ncombined,NaN,NaN,NaN
+Net Reproduction Number,small,Warwick,0.8,Household,Compliance,6,9: All households\npair up randomly,NaN,NaN,NaN
+Net Reproduction Number,half,Warwick,0.8,Household,Compliance,  C1,C1: Comparator 1\nstatus quo:\nno social bubbles,1,1,1
+Net Reproduction Number,half,Warwick,0.8,Household,Compliance,  C2,C2: unclustered contacts,NaN,15.5157946489,NaN
+Net Reproduction Number,half,Warwick,0.8,Household,Compliance,C3,C3: Increased community transmission,NaN,35.2672109851,NaN
+Net Reproduction Number,half,Warwick,0.8,Household,Compliance,1,1: Households with\nprimary school age\nchildren pair up,NaN,1.2514351959,NaN
+Net Reproduction Number,half,Warwick,0.8,Household,Compliance,2,3: Households with\nchildren of any age\n pair up,NaN,1.3097330198,NaN
+Net Reproduction Number,half,Warwick,0.8,Household,Compliance,3,4: Single occupancy\nhouseholds pair up,NaN,1.9290879175,NaN
+Net Reproduction Number,half,Warwick,0.8,Household,Compliance,4,5: Single occupancy\nhouseholds pair up\nwith random household,NaN,4.974781761,NaN
+Net Reproduction Number,half,Warwick,0.8,Household,Compliance,5,8: Scenarios 1 and 3\ncombined,NaN,2.2687156033,NaN
+Net Reproduction Number,half,Warwick,0.8,Household,Compliance,6,9: All households\npair up randomly,NaN,11.2903642135,NaN
+Net Reproduction Number,identical,Warwick,0.8,Household,Compliance,  C1,C1: Comparator 1\nstatus quo:\nno social bubbles,1,1,1
+Net Reproduction Number,identical,Warwick,0.8,Household,Compliance,  C2,C2: unclustered contacts,NaN,NaN,NaN
+Net Reproduction Number,identical,Warwick,0.8,Household,Compliance,C3,C3: Increased community transmission,NaN,NaN,NaN
+Net Reproduction Number,identical,Warwick,0.8,Household,Compliance,1,1: Households with\nprimary school age\nchildren pair up,NaN,NaN,NaN
+Net Reproduction Number,identical,Warwick,0.8,Household,Compliance,2,3: Households with\nchildren of any age\n pair up,NaN,NaN,NaN
+Net Reproduction Number,identical,Warwick,0.8,Household,Compliance,3,4: Single occupancy\nhouseholds pair up,NaN,NaN,NaN
+Net Reproduction Number,identical,Warwick,0.8,Household,Compliance,4,5: Single occupancy\nhouseholds pair up\nwith random household,NaN,NaN,NaN
+Net Reproduction Number,identical,Warwick,0.8,Household,Compliance,5,8: Scenarios 1 and 3\ncombined,NaN,NaN,NaN
+Net Reproduction Number,identical,Warwick,0.8,Household,Compliance,6,9: All households\npair up randomly,NaN,NaN,NaN
+Net Reproduction Number,half,LSHTM,0.8,Individual,Compliance,  C1,C1: Comparator 1\nstatus quo:\nno social bubbles,1,1,1
+Net Reproduction Number,half,LSHTM,0.8,Individual,Compliance,  C2,C2: unclustered contacts,NaN,9.8840144059,NaN
+Net Reproduction Number,half,LSHTM,0.8,Individual,Compliance,C3,C3: Increased community transmission,NaN,12.0670328784,NaN
+Net Reproduction Number,half,LSHTM,0.8,Individual,Compliance,1,1: Households with\nprimary school age\nchildren pair up,NaN,1.8534063141,NaN
+Net Reproduction Number,half,LSHTM,0.8,Individual,Compliance,2,3: Households with\nchildren of any age\n pair up,NaN,2.5695896492,NaN
+Net Reproduction Number,half,LSHTM,0.8,Individual,Compliance,3,4: Single occupancy\nhouseholds pair up,NaN,1.1133345245,NaN
+Net Reproduction Number,half,LSHTM,0.8,Individual,Compliance,4,5: Single occupancy\nhouseholds pair up\nwith random household,NaN,2.5327183951,NaN
+Net Reproduction Number,half,LSHTM,0.8,Individual,Compliance,5,8: Scenarios 1 and 3\ncombined,NaN,2.2337244609,NaN
+Net Reproduction Number,half,LSHTM,0.8,Individual,Compliance,6,9: All households\npair up randomly,NaN,6.8597401213,NaN
+Net Reproduction Number,half,LSHTM,0.8,Household,Non-compliance,  C1,C1: Comparator 1\nstatus quo:\nno social bubbles,1,1,1
+Net Reproduction Number,half,LSHTM,0.8,Household,Non-compliance,  C2,C2: unclustered contacts,NaN,0,NaN
+Net Reproduction Number,half,LSHTM,0.8,Household,Non-compliance,C3,C3: Increased community transmission,NaN,0,NaN
+Net Reproduction Number,half,LSHTM,0.8,Household,Non-compliance,1,1: Households with\nprimary school age\nchildren pair up,NaN,2.0345801046,NaN
+Net Reproduction Number,half,LSHTM,0.8,Household,Non-compliance,2,3: Households with\nchildren of any age\n pair up,NaN,3.0674290701,NaN
+Net Reproduction Number,half,LSHTM,0.8,Household,Non-compliance,3,4: Single occupancy\nhouseholds pair up,NaN,2.04423343,NaN
+Net Reproduction Number,half,LSHTM,0.8,Household,Non-compliance,4,5: Single occupancy\nhouseholds pair up\nwith random household,NaN,6.9280604098,NaN
+Net Reproduction Number,half,LSHTM,0.8,Household,Non-compliance,5,8: Scenarios 1 and 3\ncombined,NaN,3.7514388758,NaN
+Net Reproduction Number,half,LSHTM,0.8,Household,Non-compliance,6,9: All households\npair up randomly,NaN,19.1447733096,NaN
+Net Reproduction Number,half,LSHTM,0.8,Household,Excluding Elderly,  C1,C1: Comparator 1\nstatus quo:\nno social bubbles,1,1,1
+Net Reproduction Number,half,LSHTM,0.8,Household,Excluding Elderly,  C2,C2: unclustered contacts,NaN,0,NaN
+Net Reproduction Number,half,LSHTM,0.8,Household,Excluding Elderly,C3,C3: Increased community transmission,NaN,0,NaN
+Net Reproduction Number,half,LSHTM,0.8,Household,Excluding Elderly,1,1: Households with\nprimary school age\nchildren pair up,NaN,1.4744891881,NaN
+Net Reproduction Number,half,LSHTM,0.8,Household,Excluding Elderly,2,3: Households with\nchildren of any age\n pair up,NaN,1.8909435831,NaN
+Net Reproduction Number,half,LSHTM,0.8,Household,Excluding Elderly,3,4: Single occupancy\nhouseholds pair up,NaN,1.2485205045,NaN
+Net Reproduction Number,half,LSHTM,0.8,Household,Excluding Elderly,4,5: Single occupancy\nhouseholds pair up\nwith random household,NaN,2.5114610912,NaN
+Net Reproduction Number,half,LSHTM,0.8,Household,Excluding Elderly,5,8: Scenarios 1 and 3\ncombined,NaN,1.8422555271,NaN
+Net Reproduction Number,half,LSHTM,0.8,Household,Excluding Elderly,6,9: All households\npair up randomly,NaN,5.0296192372,NaN
