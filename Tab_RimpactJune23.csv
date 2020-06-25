@@ -92,7 +92,7 @@ Net Reproduction Number,half,LSHTM,0.8,Household,Non-compliance,6,9: All househo
 Net Reproduction Number,half,LSHTM,0.8,Household,Excluding Elderly,  C1,C1: Comparator 1\nstatus quo:\nno social bubbles,0.8,0.8,0.8,0,0,0,TRUE,TRUE,TRUE
 Net Reproduction Number,half,LSHTM,0.8,Household,Excluding Elderly,  C2,C2: unclustered contacts,0,0,0,0,0,0,TRUE,TRUE,TRUE
 Net Reproduction Number,half,LSHTM,0.8,Household,Excluding Elderly,C3,C3: Increased community transmission,0,0,0,0,0,0,TRUE,TRUE,TRUE
-Net Reproduction Number,half,LSHTM,0.8,Household,Excluding Elderly,1,1: Households with\nprimary school age\nchildren pair up,0,0.8549923436,0,0,0.0215084612,0,TRUE,TRUE,TRUE
+Net Reproduction Number,half,LSHTM,0.8,Household,Excluding Elderly,1,1: Households with\nprimary school age\nchildren pair up,0,0.8517684973,0,0,0.0137851459,0,TRUE,TRUE,TRUE
 Net Reproduction Number,half,LSHTM,0.8,Household,Excluding Elderly,2,3: Households with\nchildren of any age\n pair up,0,0.8918004379,0,0,0.0124688086,0,TRUE,TRUE,TRUE
 Net Reproduction Number,half,LSHTM,0.8,Household,Excluding Elderly,3,4: Single occupancy\nhouseholds pair up,0,0.838332168,0,0,0.0151581382,0,TRUE,TRUE,TRUE
 Net Reproduction Number,half,LSHTM,0.8,Household,Excluding Elderly,4,5: Single occupancy\nhouseholds pair up\nwith random household,0,0.9363194267,0,0,0.0171806346,0,TRUE,TRUE,TRUE
