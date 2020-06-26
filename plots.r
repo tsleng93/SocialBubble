@@ -268,7 +268,7 @@ ggsave("main_bubblematrix.pdf", units = "cm", width = 11, height = 12)
 # Plot fatality equity
 ########################
 
-read.csv("Fatality_increase_fig.csv") %>%
+read.csv("Fatality_increase_fig_June23.csv") %>%
   melt(id="Scenario") -> dt.fat
 
 dt.fat %>%
