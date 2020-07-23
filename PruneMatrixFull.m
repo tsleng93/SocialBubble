@@ -58,7 +58,17 @@ Morig = M;
 temp = AInf.*(tau./sum(M));
 
 temp(isinf(temp)) = 0;
+
+%If using Matlab
 RateM = (ATrans.*M).*temp';
+
+%If using Octave
+%{
+ATransmat = repmat(ATrans, length(M), 1);
+tempmat = repmat(temp, length(M), 1);
+RateM = (ATransmat.*M).*tempmat';
+%}
+
 
 %Define probability matrix - people infect houses with probability P
 PM = 1 - exp(-RateM);
