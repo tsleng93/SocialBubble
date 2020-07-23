@@ -35,7 +35,19 @@ end
 %Calculate B and eps constants
 %Total rate of Bubble transmission is KB x tauB
 %Total rate of mean-field transmission is Keps x eps
+
+%If using Matlab
 KB = sum(sum((ATrans.*B).*(AInf./CB)'));
+
+%if using Octave
+%{
+for i = 1:length(B)
+  KBvec(i) = sum(ATrans.*B(i,:).*(AInf(i)./CB(i)));
+end
+KB = sum(KBvec);
+%}
+
+
 Keps = sum(AInf./C).*sum(ATrans)/length(C);
 
 %Find eps2 satisying (Keps x eps2) = (KB x tauB) + (Keps x eps)
