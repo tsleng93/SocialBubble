@@ -295,14 +295,14 @@ dt.fat %>%
   scale_fill_manual(labels=c("eligible","not eligible"),
                     values=c("#2748e8","#d17204"))+
   scale_x_discrete(labels = c("Scenario 1:\n(young children)",
-                              "Scenario 2:\n(children))",
+                              "Scenario 2:\n(children)",
                               "Scenario 3:\n(Single households)",
                               "Scenario 4:\n(1 adult households\nwith any)",
                               "Scenario 5:\n(Scenarios 1 and 3\ncombined)",
                               "Scenario 6:\n(All households)")) +
   coord_flip()+
   labs(x="",
-       y="Relative risks for infection compared to eligible / not eligible\nhousholds in scenario C1 (status quo)",
+       y="Relative risks for infection compared to eligible / not eligible\nhouseholds in scenario C1 (status quo)",
        fill="Household eligibility\nfor forming social bubbles") +
   theme_light() + theme(legend.position = c(0.8, 0.3),
                         legend.background = element_rect(fill=alpha('white', 0.7)),
@@ -325,7 +325,7 @@ dt.fat %>%
   labs(x="",
        y="Percentage of fatalities\n ",
        fill="Fatalities") +
-  theme_light() + theme(legend.position = c(0.8, 0.3),
+  theme_light() + theme(legend.position = c(0.8, 0.5),
                         legend.background = element_rect(fill=alpha('white', 0.7)),
                         legend.title=element_text(size=9)) -> p2
 
