@@ -284,14 +284,14 @@ ggsave("main_bubblematrix.pdf", units = "cm", width = 11, height = 12)
 # Plot fatality equity
 ########################
 
-read.csv("Fatality_increase_current.csv") %>%
+
+read.csv("Fatality_increase_New.csv") %>%
   melt(id="Scenario") -> dt.fat
 
 dt.fat %>%
   filter(variable %in% c("K_over_M", "L_over_N")) %>%
   ggplot(aes(x=Scenario, y=value, fill=variable)) +
   geom_bar(stat="identity", position = position_dodge(.7), alpha=.6, color="white") +
-  scale_y_log10() +
   scale_fill_manual(labels=c("eligible","not eligible"),
                     values=c("#2748e8","#d17204"))+
   scale_x_discrete(labels = c("Scenario 1:\n(young children)",
@@ -325,7 +325,7 @@ dt.fat %>%
   labs(x="",
        y="Percentage of fatalities\n ",
        fill="Fatalities") +
-  theme_light() + theme(legend.position = c(0.8, 0.5),
+  theme_light() + theme(legend.position = c(0.8, 0.65),
                         legend.background = element_rect(fill=alpha('white', 0.7)),
                         legend.title=element_text(size=9)) -> p2
 
