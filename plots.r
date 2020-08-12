@@ -285,7 +285,7 @@ ggsave("main_bubblematrix.pdf", units = "cm", width = 11, height = 12)
 ########################
 
 
-read.csv("Fatality_increase_New.csv") %>%
+read.csv("Fatality_increase_current.csv") %>%
   melt(id="Scenario") -> dt.fat
 
 dt.fat %>%
