@@ -28,17 +28,8 @@ function [NewM, SAR] = PruneMatrixFull(M,tau, Type, A, RelTrans, RelInf)
 %Note: M is a N x N matrix where N is the population size.
 
 %Authors: Trystan Leng, Connor White and Matt Keeling.
-%Last update 29/05/2020.
+%Last update 13/08/2020.
 
-
-if nargin == 0
-   [~, M, ~, A] = HouseholdMakerAge;
-   tau = 1;
-   Type = 'H';
-   RelTrans = [0.64 0.64 0.64 0.64 1 1 1 2.9 2.9 2.9];
-   RelInf = [0.5 0.5 0.5 0.5 1 1 1 1 1 1];    
-    
-end
 
 
 
@@ -55,23 +46,36 @@ end
 Morig = M;
 
 %Define rate matrix
-temp = AInf.*(tau./sum(M));
+tempIJ1 = AInf.*(tau./sum(M));
+tempIJ2 = ATrans;
+tempIJ1(isinf(tempIJ1)) = 0;
 
-temp(isinf(temp)) = 0;
+tempJI1 = AInf.*tau;
+tempJI2 = ATrans./sum(M);
+tempJI2(isinf(tempJI2)) = 0;
 
-%If using Matlab
-RateM = (ATrans.*M).*temp';
 
-%If using Octave
+%For matlab%
+tempIJ = (tempIJ2.*M).*tempIJ1';
+tempJI = (tempJI2.*M).*tempJI1';
+
+
+%For Octave%
 %{
-ATransmat = repmat(ATrans, length(M), 1);
-tempmat = repmat(temp, length(M), 1);
-RateM = (ATransmat.*M).*tempmat';
+tempIJ1Mat = repmat(tempIJ1, length(M), 1);
+tempIJ2Mat = repmat(tempIJ2, length(M), 1);
+tempJI2Mat = repmat(tempJI1, length(M), 1);
+tempJI2Mat = repmat(tempJI2, length(M), 1);
+tempIJ = (tempIJ2mat.*M).*(tempIJ1Mat');
+tempJI = (tempJI2mat.*M).*(tempJI1Mat');
 %}
+
+RateM = tempIJ + tempJI;
 
 
 %Define probability matrix - people infect houses with probability P
 PM = 1 - exp(-RateM);
+
 
 %Sample matrix
 r = rand(size(M));
@@ -84,4 +88,3 @@ if Type == 'H'
 end
 
 NewM = M;
-
