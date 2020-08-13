@@ -15,10 +15,10 @@ Underlying code and functions are written in matlab, and visualisations are writ
 
 To generate the underlying data for the plots in Figures 3, 8, and the Extended Data, users should run the code 'MainCode.m'. After running this, users should then run 'DataMaker.m' to produce the underlying .csv files. 
 
-To generate the underlying data for the plots in Figure 7, users should run the code 'figure7Code.m', which runs the code
+To generate the underlying data for the plots in Figure 6, users should run the code 'figure7Code.m', which runs the code
 and produces the underlying .csv files.
 
-The R code 'plots.r' can be run as it is in order to generate the exact plots of Figures 1, 3, 7, 8 and the Extended Data. To generate analogous plots from regenerated data, the .csv files should be replaced with those generated from 'MainCode.m' and 'figure7Code.m'
+The R code 'plots.r' can be run as it is in order to generate the exact plots of Figures 1, 3, 6, 8 and the Extended Data. To generate analogous plots from regenerated data, the .csv files should be replaced with those generated from 'MainCode.m' and 'figure7Code.m'
 
 To generate the data and plots for Figure 2, Figure 4, Figure 5, and Figure 6 users should run the code 'figure2Code.m', 'figure4Code.m', etc.
 
