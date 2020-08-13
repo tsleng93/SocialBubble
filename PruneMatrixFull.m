@@ -30,9 +30,6 @@ function [NewM, SAR] = PruneMatrixFull(M,tau, Type, A, RelTrans, RelInf)
 %Authors: Trystan Leng, Connor White and Matt Keeling.
 %Last update 13/08/2020.
 
-
-
-
 for i = 1:length(RelInf)
     AInf(A==i) = RelInf(i);
     ATrans(A==i) = RelTrans(i);
@@ -56,21 +53,22 @@ tempJI2(isinf(tempJI2)) = 0;
 
 
 %For matlab%
+
 tempIJ = (tempIJ2.*M).*tempIJ1';
 tempJI = (tempJI2.*M).*tempJI1';
-
+RateM = tempIJ + tempJI;
+%}
 
 %For Octave%
 %{
 tempIJ1Mat = repmat(tempIJ1, length(M), 1);
 tempIJ2Mat = repmat(tempIJ2, length(M), 1);
-tempJI2Mat = repmat(tempJI1, length(M), 1);
+tempJI1Mat = repmat(tempJI1, length(M), 1);
 tempJI2Mat = repmat(tempJI2, length(M), 1);
-tempIJ = (tempIJ2mat.*M).*(tempIJ1Mat');
-tempJI = (tempJI2mat.*M).*(tempJI1Mat');
-%}
+RateM = (tempIJ2Mat.*M).*(tempIJ1Mat') + (tempJI2Mat.*M).*(tempJI1Mat');
 
-RateM = tempIJ + tempJI;
+tempIJ1Mat = [];  tempIJ2Mat = []; tempJI1Mat = []; tempJI2Mat = [];
+%}
 
 
 %Define probability matrix - people infect houses with probability P
