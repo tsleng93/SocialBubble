@@ -1,8 +1,9 @@
 function B = ScenarioTypeHouseBubble(H, TypeorSize, Position)
 
-%This function forms and adjacency matrix for Bubble connections. The
-%bubbles are formed from households that either are of size 1, or contain a
-%child of <10 years of age.
+%This function forms and adjacency matrix for Bubble connections.
+%The function requires a vector 'TypeorSize' which designates some attribute
+%of the household, e.g. if it is Size 1, if it has includes a child <10 years
+% old, etc.
 
 %Input:
 %   - H is the adjacency matrix for Household connections.
@@ -13,6 +14,7 @@ function B = ScenarioTypeHouseBubble(H, TypeorSize, Position)
 
 %Output
 %   - B is the adjacency matrix for bubble connections.
+
 
 temp = find(TypeorSize == 1);
 
