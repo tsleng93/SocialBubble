@@ -1,5 +1,23 @@
 function [Mnew] = RewirePrunedMatrix(M,p, Cnum)
 
+%This function takes a pruned adjacency matrix M and recconects a number of edges
+%that is proprotional to the value p. 
+
+%Input:
+%   - M is the adjacency matrix for the household or bubble contacts.
+%   - p is the proportion of connections we want to reconnect. 
+%   - Cnum is the scenario C2 or C3
+
+%Output:
+%   - NewM is the adjacency matrix after it has been pruned.
+%   - Phi is the clusetring coefficient.
+
+%Note: M and Mnew are N x N matrices where N is the population size.
+
+%Authors: Trystan Leng.
+%Last update 13/08/2020.
+
+
 if Cnum == 'C3'
     N = length(M);
     
