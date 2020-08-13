@@ -3,7 +3,7 @@
 This repository contains the underlying code and functions used in the paper ["The effectiveness of social bubbles as part of a Covid-19 lockdown exit strategy, a modelling study"](https://www.medrxiv.org/content/10.1101/2020.06.05.20123448v1), by Trystan Leng*, Connor White, Joe Hilton, Adam J Kucharski, 
 Lorenzo Pellis, Helena Stage, Nicholas Davies, CMMID nCov working group, Matt Keeling & Stefan Flasche.
 
-
+https://zenodo.org/badge/264142766.svg
 
 Corresponding author: Trystan Leng, email: t.leng@warwick.ac.uk
 
