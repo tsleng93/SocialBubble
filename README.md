@@ -18,7 +18,7 @@ and produces the underlying .csv files.
 
 The R code 'plots.r' can be run as it is in order to generate the exact plots of Figures 1, 3, 7, 8 and the Extended Data. To generate analogous plots from regenerated data, the .csv files should be replaced with those generated from 'MainCode.m' and 'figure7Code.m'
 
-To generate the data and plots for Figure 2, Figure 4, Figure 5, and Figure 7 users should run the code 'figure2Code.m', 'figure4Code.m', etc.
+To generate the data and plots for Figure 2, Figure 4, Figure 5, and Figure 6 users should run the code 'figure2Code.m', 'figure4Code.m', etc.
 
 # Using GNU Octave
 
