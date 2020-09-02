@@ -85,13 +85,13 @@ Corig = C;
 %for individual based mean field
 Cindiv = ones(1,length(C));
 
-
+Runs = 10;
 %Initialise R, Check and D arrays
 Rc1 = zeros(Runs, 33); Rc2 = zeros(Runs,33); Rc3 = zeros(Runs,33); R1 = zeros(Runs,30); R2 = zeros(Runs,33); R3 = zeros(Runs,33); R4 = zeros(Runs,33); R5 = zeros(Runs,33); R6 = zeros(Runs,33);
 Checkc1 = zeros(Runs, 33); Checkc2 = zeros(Runs,33); Checkc3 = zeros(Runs,33); Check1 = zeros(Runs,33); Check2 = zeros(Runs,33); Check3 = zeros(Runs,33); Check4 = zeros(Runs,33); Check5 = zeros(Runs,33); Check6 = zeros(Runs,30);
 Dc1 = zeros(Runs, 33); Dc2 = zeros(Runs,33); Dc3 = zeros(Runs,33); D1 = zeros(Runs,33); D2 = zeros(Runs,33); D3 = zeros(Runs,33); D4 = zeros(Runs,33); D5 = zeros(Runs,33); D6 = zeros(Runs,33);
 
-Runs = 10;
+
 
 for i = ScenarioVec
     if i > 25 && i < 28
