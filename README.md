@@ -31,7 +31,7 @@ The analysis performed using MATLAB can be replicated using the open MATLAB comp
 
 In this study we use a stochastic network simulation model to assess the impact of social bubbles. While in this study, we consider households and the effect of introducing bubbles to an epidemic, and consider three age classes (children, adults, and older adults), our simulation methods are general, and could be used for an arbitrary probability matrix with an arbitrary number of risk classes. 
 
-For a description of the underlying functions of the model, see the pdf file 'UnderlyingFunctions.pdf' (coming soon).
+For a description of the underlying functions of the model, see the pdf file 'UnderlyingFunctions.pdf'.
 
-For a brief vignette on how to use the functions described in this repository, see the pdf file 'Vignette.pdf' (coming soon).
+For a brief vignette on how to use the functions described in this repository, see the pdf file 'Vignette.pdf'.
 
