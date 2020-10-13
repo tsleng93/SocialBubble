@@ -35,3 +35,7 @@ For a description of the underlying functions of the model, see the pdf file 'Un
 
 For a brief vignette on how to use the functions described in this repository, see the pdf file 'Vignette.pdf'.
 
+To create age stratified household distributions from publicly available data, which can be used to build syntetic populations for this model, see:
+
+Hilton J (2020). JBHilton/processing-household-composition-data. [Data Collection]. Github. [https://doi.org/10.5281/zenodo.4048649](https://doi.org/10.5281/zenodo.4048649)
+
