@@ -36,12 +36,12 @@
 %Scenario 28 - LSHTM parameters, non-compliance, tauB = 0.5 tauH, SAR 10%, R = 0.8
 %Scenario 29 - LSHTM parameters, non-compliance, tauB = 0.5 tauH, SAR 20%, R = 0.8
 %Scenario 30 - LSHTM parameters, non-compliance, tauB = 0.5 tauH, SAR 40%, R = 0.8
-%Final scenarios used in paper - 2,4,5,6,7,11,40,20,26,29
+%Final scenarios used in paper - 2,4,5,6,7,11,40,20,26,29, 32, 35
 
 
 
 %Scenarios used for the paper
-ScenarioVec = [1 2 3 4 5 6 7 8 9 11 14 20 26];
+ScenarioVec = [1 2 3 4 5 6 7 8 9 11 14 20 26 35];
 %ScenarioVec = [1 2 3 4 5 6 7 8 9 11 14 20 26];
 %ScenarioVec = [1 2 3 20];
 %ScenarioVec = [5];
@@ -64,20 +64,25 @@ epsLS4 = [0 0.55 0];
 %base epsilon values - Warwick
 epsWar = [0 0.525 0];
 
+
+%tau values (density dependent transmission)
+tauLSdens = 0.5*[0 0.275 0];
+epsLSdens = [0 1.205 0];
+
 %Relative Chance of infection parameters, in 10 year age bands
 RelInfLS = [0.5 0.5 1 1 1 1 1 1 1]; RelInfWar = [0.79 0.79 1 1 1 1 1.25 1.25 1.25];
-RelInfM = [RelInfLS; RelInfLS; RelInfLS; RelInfLS; RelInfLS; RelInfLS; RelInfLS; RelInfLS; RelInfLS; RelInfLS; RelInfLS; RelInfLS; RelInfLS; RelInfLS; RelInfLS; RelInfWar; RelInfWar;RelInfWar; RelInfWar; RelInfWar; RelInfWar; RelInfWar; RelInfWar; RelInfWar; RelInfLS; RelInfLS; RelInfLS; RelInfLS; RelInfLS; RelInfLS; RelInfLS; RelInfLS; RelInfLS];  
+RelInfM = [RelInfLS; RelInfLS; RelInfLS; RelInfLS; RelInfLS; RelInfLS; RelInfLS; RelInfLS; RelInfLS; RelInfLS; RelInfLS; RelInfLS; RelInfLS; RelInfLS; RelInfLS; RelInfWar; RelInfWar;RelInfWar; RelInfWar; RelInfWar; RelInfWar; RelInfWar; RelInfWar; RelInfWar; RelInfLS; RelInfLS; RelInfLS; RelInfLS; RelInfLS; RelInfLS; RelInfLS; RelInfLS; RelInfLS; RelInfLS; RelInfLS; RelInfLS];  
 
 %Relative Transmissibility paramaters, in 10 years age bands
 RelTransLS = ones(1,9); RelTransWar = [0.64 0.64 1 1 1 1 2.9 2.9 2.9];
-RelTransM = [RelTransLS; RelTransLS; RelTransLS; RelTransLS; RelTransLS; RelTransLS; RelTransLS; RelTransLS; RelTransLS; RelTransLS; RelTransLS; RelTransLS; RelTransLS; RelTransLS; RelTransLS; RelTransWar; RelTransWar;RelTransWar; RelTransWar; RelTransWar; RelTransWar; RelTransWar; RelTransWar; RelTransWar; RelTransLS; RelTransLS; RelTransLS; RelTransLS; RelTransLS; RelTransLS; RelTransLS; RelTransLS; RelTransLS];  
+RelTransM = [RelTransLS; RelTransLS; RelTransLS; RelTransLS; RelTransLS; RelTransLS; RelTransLS; RelTransLS; RelTransLS; RelTransLS; RelTransLS; RelTransLS; RelTransLS; RelTransLS; RelTransLS; RelTransWar; RelTransWar;RelTransWar; RelTransWar; RelTransWar; RelTransWar; RelTransWar; RelTransWar; RelTransWar; RelTransLS; RelTransLS; RelTransLS; RelTransLS; RelTransLS; RelTransLS; RelTransLS; RelTransLS; RelTransLS; RelTransLS; RelTransLS; RelTransLS];  
 
 %set tauH values
-tauH = [tauLS tauLS tauLS tauLS tauLS tauWar tauWar tauWar tauLS tauLS tauLS];
+tauH = [tauLS tauLS tauLS tauLS tauLS tauWar tauWar tauWar tauLS tauLS tauLS tauLSdens];
 %set tauB values
-tauB = [0.1*tauLS 0.5*tauLS  tauLS 0.5*tauLS 0.5*tauLS  0.1*tauWar 0.5*tauWar tauWar 0.5*tauLS 0.5*tauLS 0.5*tauLS];
+tauB = [0.1*tauLS 0.5*tauLS  tauLS 0.5*tauLS 0.5*tauLS  0.1*tauWar 0.5*tauWar tauWar 0.5*tauLS 0.5*tauLS 0.5*tauLS 0.5*tauLSdens];
 %set epsilon values 
-eps = [epsLS1 epsLS1 epsLS1 epsLS2 epsLS3 epsWar epsWar epsWar epsLS4 epsLS1 epsLS1];
+eps = [epsLS1 epsLS1 epsLS1 epsLS2 epsLS3 epsWar epsWar epsWar epsLS4 epsLS1 epsLS1 epsLSdens];
 load('FullCensusHouseholdWorkspace.mat');
 
 %original C
@@ -93,6 +98,8 @@ Dc1 = zeros(Runs, 33); Dc2 = zeros(Runs,33); Dc3 = zeros(Runs,33); D1 = zeros(Ru
 
 
 
+
+
 for i = ScenarioVec
     if i > 25 && i < 28
        C = Cindiv; 
@@ -100,6 +107,11 @@ for i = ScenarioVec
        C = Corig;
     end
     
+    if i  == 35
+        transmissiontype = 'dens';
+    else
+        transmissiontype = 'freq';
+    end
     
     RelInf = RelInfM(i,:);
     RelTrans = RelTransM(i,:);
@@ -111,14 +123,14 @@ for i = ScenarioVec
         %Prune Matrices
         %Scenario c1
         
-        [NewH, SAR] = PruneMatrixFull(H, tauH(i), 'H',  Age, RelTrans, RelInf);
+        [NewH, SAR] = PruneMatrixFull(H, tauH(i), 'H',  Age, RelTrans, RelInf, transmissiontype);
         SARs(j,i) = SAR;
-        NewB1 = PruneMatrixFull(B1, tauB(i), 'B',  Age, RelTrans, RelInf);   
-        NewB2 = PruneMatrixFull(B2, tauB(i), 'B',  Age, RelTrans, RelInf);
-        NewB3 = PruneMatrixFull(B3, tauB(i), 'B',  Age, RelTrans, RelInf);
-        NewB4 = PruneMatrixFull(B4, tauB(i), 'B',  Age, RelTrans, RelInf);
+        NewB1 = PruneMatrixFull(B1, tauB(i), 'B',  Age, RelTrans, RelInf, transmissiontype);   
+        NewB2 = PruneMatrixFull(B2, tauB(i), 'B',  Age, RelTrans, RelInf, transmissiontype);
+        NewB3 = PruneMatrixFull(B3, tauB(i), 'B',  Age, RelTrans, RelInf, transmissiontype);
+        NewB4 = PruneMatrixFull(B4, tauB(i), 'B',  Age, RelTrans, RelInf, transmissiontype);
         NewB5 = NewB1 + NewB3;
-        NewB6 = PruneMatrixFull(B6, tauB(i), 'B',  Age, RelTrans, RelInf);
+        NewB6 = PruneMatrixFull(B6, tauB(i), 'B',  Age, RelTrans, RelInf, transmissiontype);
         NewBc2 = RewirePrunedMatrix(NewB6, 1, 'C2');
         NewBc3 = RewirePrunedMatrix(NewB6, 1, 'C3');
         
@@ -203,18 +215,18 @@ for i = ScenarioVec2
         %Prune Matrices
         [NewH, SAR] = PruneMatrixFull(H, tauH(i), 'H',  Age, RelTrans, RelInf);
         SARs(j,i) = SAR;
-        NewB1 = PruneMatrixFull(B1, tauB(i), 'B',  Age, RelTrans, RelInf);
-        NewB2 = PruneMatrixFull(B2, tauB(i), 'B',  Age, RelTrans, RelInf);
-        NewB3 = PruneMatrixFull(B3, tauB(i), 'B',  Age, RelTrans, RelInf);
-        NewB4 = PruneMatrixFull(B4, tauB(i), 'B',  Age, RelTrans, RelInf);
+        NewB1 = PruneMatrixFull(B1, tauB(i), 'B',  Age, RelTrans, RelInf, transmissiontype);
+        NewB2 = PruneMatrixFull(B2, tauB(i), 'B',  Age, RelTrans, RelInf, transmissiontype);
+        NewB3 = PruneMatrixFull(B3, tauB(i), 'B',  Age, RelTrans, RelInf, transmissiontype);
+        NewB4 = PruneMatrixFull(B4, tauB(i), 'B',  Age, RelTrans, RelInf, transmissiontype);
         NewB5 = NewB1 + NewB3;
-        NewB6 = PruneMatrixFull(B6, tauB(i), 'B',  Age, RelTrans, RelInf);
-        NewBa1 = PruneMatrixFull(Ba1, tauB(i), 'B',  Age, RelTrans, RelInf);
-        NewBa2 = PruneMatrixFull(Ba2, tauB(i), 'B',  Age, RelTrans, RelInf);
-        NewBa3 = PruneMatrixFull(Ba3, tauB(i), 'B',  Age, RelTrans, RelInf);
-        NewBa4 = PruneMatrixFull(Ba4, tauB(i), 'B',  Age, RelTrans, RelInf);
+        NewB6 = PruneMatrixFull(B6, tauB(i), 'B',  Age, RelTrans, RelInf, transmissiontype);
+        NewBa1 = PruneMatrixFull(Ba1, tauB(i), 'B',  Age, RelTrans, RelInf, transmissiontype);
+        NewBa2 = PruneMatrixFull(Ba2, tauB(i), 'B',  Age, RelTrans, RelInf, transmissiontype);
+        NewBa3 = PruneMatrixFull(Ba3, tauB(i), 'B',  Age, RelTrans, RelInf, transmissiontype);
+        NewBa4 = PruneMatrixFull(Ba4, tauB(i), 'B',  Age, RelTrans, RelInf, transmissiontype);
         NewBa5 = NewBa1 + NewBa3;
-        NewBa6 = PruneMatrixFull(Ba6, tauB(i), 'B',  Age, RelTrans, RelInf);
+        NewBa6 = PruneMatrixFull(Ba6, tauB(i), 'B',  Age, RelTrans, RelInf, transmissiontype);
         
         if j == 1
             %Run initial scenarios to ascertain initial values
@@ -281,12 +293,12 @@ for i = ScenarioVec3
         %Prune Matrices
         [NewH, SAR] = PruneMatrixFull(H, tauH(i), 'H',  Age, RelTrans, RelInf);
         SARs(j,i) = SAR;
-        NewBe1 = PruneMatrixFull(Ba1, tauB(i), 'B',  Age, RelTrans, RelInf);
-        NewBe2 = PruneMatrixFull(Ba2, tauB(i), 'B',  Age, RelTrans, RelInf);
-        NewBe3 = PruneMatrixFull(Ba3, tauB(i), 'B',  Age, RelTrans, RelInf);
-        NewBe4 = PruneMatrixFull(Ba4, tauB(i), 'B',  Age, RelTrans, RelInf);
+        NewBe1 = PruneMatrixFull(Ba1, tauB(i), 'B',  Age, RelTrans, RelInf, transmissiontype);
+        NewBe2 = PruneMatrixFull(Ba2, tauB(i), 'B',  Age, RelTrans, RelInf, transmissiontype);
+        NewBe3 = PruneMatrixFull(Ba3, tauB(i), 'B',  Age, RelTrans, RelInf, transmissiontype);
+        NewBe4 = PruneMatrixFull(Ba4, tauB(i), 'B',  Age, RelTrans, RelInf, transmissiontype);
         NewBe5 = NewBa1 + NewBa3;
-        NewBe6 = PruneMatrixFull(Ba6, tauB(i), 'B',  Age, RelTrans, RelInf);
+        NewBe6 = PruneMatrixFull(Ba6, tauB(i), 'B',  Age, RelTrans, RelInf, transmissiontype);
         
         if j == 1
             %Run initial scenarios to ascertain initial values
@@ -334,6 +346,9 @@ for i = ScenarioVec3
     toc
 end
 %}
+
+
+
 
 
 
