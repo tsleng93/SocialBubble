@@ -142,14 +142,6 @@ for(i in c("1","2","3","4","5","6","C2","C3")){
             dt.res %>% filter(Scenario==i, Outcome=="Net Reproduction Number", Parameter_set=="Warwick", Compliance=="Compliance", Mean_field_assumption=="Household",R_init==.8, TauB=="half") %>% select(value) %>% as.numeric(),
             dt.res %>% filter(Scenario==i, Outcome=="Net Reproduction Number", Parameter_set=="LSHTM", Compliance=="Compliance", Mean_field_assumption=="Household",R_init==.8, TauB=="half") %>% select(value) %>% as.numeric(),
             NA)) %>%
-    rbind(c("Net Reproduction Number","CommTrans",
-            NA,
-            dt.res %>% filter(Scenario==i, Outcome=="Net Reproduction Number", Parameter_set=="LSHTM", Compliance=="Compliance", Mean_field_assumption=="Household",R_init==.8, TauB=="half") %>% select(value) %>% as.numeric(),
-            dt.res %>% filter(Scenario==i, Outcome=="Net Reproduction Number", Parameter_set=="LSHTM", Compliance=="Compliance", Mean_field_assumption=="Individual",R_init==.8, TauB=="half") %>% select(value) %>% as.numeric())) %>%
-    rbind(c("Net Reproduction Number","Compliance",
-            NA,
-            dt.res %>% filter(Scenario==i, Outcome=="Net Reproduction Number", Parameter_set=="LSHTM", Compliance=="Compliance", Mean_field_assumption=="Household",R_init==.8, TauB=="half") %>% select(value) %>% as.numeric(),
-            dt.res %>% filter(Scenario==i, Outcome=="Net Reproduction Number", Parameter_set=="LSHTM", Compliance=="Non-compliance", Mean_field_assumption=="Household",R_init==.8, TauB=="half") %>% select(value) %>% as.numeric())) %>% 
     rbind(c("Net Reproduction Number","Excluding Elderly",
             dt.res %>% filter(Scenario==i, Outcome=="Net Reproduction Number", Parameter_set=="LSHTM", Compliance=="Excluding Elderly", Mean_field_assumption=="Household",R_init==.8, TauB=="half") %>% select(value) %>% as.numeric(),
             dt.res %>% filter(Scenario==i, Outcome=="Net Reproduction Number", Parameter_set=="LSHTM", Compliance=="Compliance", Mean_field_assumption=="Household",R_init==.8, TauB=="half") %>% select(value) %>% as.numeric())) %>%
@@ -158,6 +150,19 @@ for(i in c("1","2","3","4","5","6","C2","C3")){
             dt.res %>% filter(Scenario==i, Outcome=="Net Reproduction Number", Parameter_set=="LSHTM", Compliance=="Compliance", Mean_field_assumption=="Household",R_init==.8, TauB=="half") %>% select(value) %>% as.numeric(),
             dt.res %>% filter(Scenario==i, Outcome=="Net Reproduction Number", Parameter_set=="LSHTM", Compliance=="Compliance", Mean_field_assumption=="Household",R_init==.9, TauB=="half") %>% select(value) %>% as.numeric(),
             NA)) %>%
+    rbind(c("Net Reproduction Number","Compliance",
+            NA,
+            dt.res %>% filter(Scenario==i, Outcome=="Net Reproduction Number", Parameter_set=="LSHTM", Compliance=="Compliance", Mean_field_assumption=="Household",R_init==.8, TauB=="half") %>% select(value) %>% as.numeric(),
+            dt.res %>% filter(Scenario==i, Outcome=="Net Reproduction Number", Parameter_set=="LSHTM", Compliance=="Non-compliance", Mean_field_assumption=="Household",R_init==.8, TauB=="half") %>% select(value) %>% as.numeric())) %>% 
+    rbind(c("Net Reproduction Number","CommTrans",
+            NA,
+            dt.res %>% filter(Scenario==i, Outcome=="Net Reproduction Number", Parameter_set=="LSHTM", Compliance=="Compliance", Mean_field_assumption=="Household",R_init==.8, TauB=="half") %>% select(value) %>% as.numeric(),
+            dt.res %>% filter(Scenario==i, Outcome=="Net Reproduction Number", Parameter_set=="LSHTM", Compliance=="Compliance", Mean_field_assumption=="Individual",R_init==.8, TauB=="half") %>% select(value) %>% as.numeric())) %>%
+    rbind(c("Net Reproduction Number","Density",
+            NA,
+            dt.res %>% filter(Scenario==i, Outcome=="Net Reproduction Number", Parameter_set=="LSHTM", Compliance=="Compliance", Mean_field_assumption=="Household",R_init==.8, TauB=="half") %>% select(value) %>% as.numeric(),
+            dt.res %>% filter(Scenario==i, Outcome=="Net Reproduction Number", Parameter_set=="LSHTM", Compliance=="density", Mean_field_assumption=="Household",R_init==.8, TauB=="half") %>% select(value) %>% as.numeric())) %>%
+
     rbind(c("Increase in fatalities","tauB",
             dt.res %>% filter(Scenario==i, Outcome=="Increase in fatalities", Parameter_set=="LSHTM", Compliance=="Compliance", Mean_field_assumption=="Household",R_init==.8, TauB=="small") %>% select(value) %>% as.numeric(),
             dt.res %>% filter(Scenario==i, Outcome=="Increase in fatalities", Parameter_set=="LSHTM", Compliance=="Compliance", Mean_field_assumption=="Household",R_init==.8, TauB=="half") %>% select(value) %>% as.numeric(),
@@ -170,14 +175,6 @@ for(i in c("1","2","3","4","5","6","C2","C3")){
             dt.res %>% filter(Scenario==i, Outcome=="Increase in fatalities", Parameter_set=="Warwick", Compliance=="Compliance", Mean_field_assumption=="Household",R_init==.8, TauB=="half") %>% select(value) %>% as.numeric(),
             dt.res %>% filter(Scenario==i, Outcome=="Increase in fatalities", Parameter_set=="LSHTM", Compliance=="Compliance", Mean_field_assumption=="Household",R_init==.8, TauB=="half") %>% select(value) %>% as.numeric(),
             NA)) %>%
-    rbind(c("Increase in fatalities","CommTrans",
-            NA,
-            dt.res %>% filter(Scenario==i, Outcome=="Increase in fatalities", Parameter_set=="LSHTM", Compliance=="Compliance", Mean_field_assumption=="Household",R_init==.8, TauB=="half") %>% select(value) %>% as.numeric(),
-            dt.res %>% filter(Scenario==i, Outcome=="Increase in fatalities", Parameter_set=="LSHTM", Compliance=="Compliance", Mean_field_assumption=="Individual",R_init==.8, TauB=="half") %>% select(value) %>% as.numeric())) %>%
-    rbind(c("Increase in fatalities","Compliance",
-            NA,
-            dt.res %>% filter(Scenario==i, Outcome=="Increase in fatalities", Parameter_set=="LSHTM", Compliance=="Compliance", Mean_field_assumption=="Household",R_init==.8, TauB=="half") %>% select(value) %>% as.numeric(),
-            dt.res %>% filter(Scenario==i, Outcome=="Increase in fatalities", Parameter_set=="LSHTM", Compliance=="Non-compliance", Mean_field_assumption=="Household",R_init==.8, TauB=="half") %>% select(value) %>% as.numeric())) %>%
     rbind(c("Increase in fatalities","Excluding Elderly",
             dt.res %>% filter(Scenario==i, Outcome=="Increase in fatalities", Parameter_set=="LSHTM", Compliance=="Excluding Elderly", Mean_field_assumption=="Household",R_init==.8, TauB=="half") %>% select(value) %>% as.numeric(),
             dt.res %>% filter(Scenario==i, Outcome=="Increase in fatalities", Parameter_set=="LSHTM", Compliance=="Compliance", Mean_field_assumption=="Household",R_init==.8, TauB=="half") %>% select(value) %>% as.numeric(),
@@ -186,13 +183,28 @@ for(i in c("1","2","3","4","5","6","C2","C3")){
             dt.res %>% filter(Scenario==i, Outcome=="Increase in fatalities", Parameter_set=="LSHTM", Compliance=="Compliance", Mean_field_assumption=="Household",R_init==.9, TauB=="half") %>% select(value) %>% as.numeric(),
             dt.res %>% filter(Scenario==i, Outcome=="Increase in fatalities", Parameter_set=="LSHTM", Compliance=="Compliance", Mean_field_assumption=="Household",R_init==.8, TauB=="half") %>% select(value) %>% as.numeric(),
             dt.res %>% filter(Scenario==i, Outcome=="Increase in fatalities", Parameter_set=="LSHTM", Compliance=="Compliance", Mean_field_assumption=="Household",R_init==.7, TauB=="half") %>% select(value) %>% as.numeric())) %>%
+    rbind(c("Increase in fatalities","CommTrans",
+            NA,
+            dt.res %>% filter(Scenario==i, Outcome=="Increase in fatalities", Parameter_set=="LSHTM", Compliance=="Compliance", Mean_field_assumption=="Household",R_init==.8, TauB=="half") %>% select(value) %>% as.numeric(),
+            dt.res %>% filter(Scenario==i, Outcome=="Increase in fatalities", Parameter_set=="LSHTM", Compliance=="Compliance", Mean_field_assumption=="Individual",R_init==.8, TauB=="half") %>% select(value) %>% as.numeric())) %>%
+    rbind(c("Increase in fatalities","Compliance",
+            NA,
+            dt.res %>% filter(Scenario==i, Outcome=="Increase in fatalities", Parameter_set=="LSHTM", Compliance=="Compliance", Mean_field_assumption=="Household",R_init==.8, TauB=="half") %>% select(value) %>% as.numeric(),
+            dt.res %>% filter(Scenario==i, Outcome=="Increase in fatalities", Parameter_set=="LSHTM", Compliance=="Non-compliance", Mean_field_assumption=="Household",R_init==.8, TauB=="half") %>% select(value) %>% as.numeric())) %>%
+    rbind(c("Increase in fatalities","Density",
+            NA,
+            dt.res %>% filter(Scenario==i, Outcome=="Increase in fatalities", Parameter_set=="LSHTM", Compliance=="Compliance", Mean_field_assumption=="Household",R_init==.8, TauB=="half") %>% select(value) %>% as.numeric(),
+            dt.res %>% filter(Scenario==i, Outcome=="Increase in fatalities", Parameter_set=="LSHTM", Compliance=="density", Mean_field_assumption=="Household",R_init==.8, TauB=="half") %>% select(value) %>% as.numeric())) %>%
+    
+    
     slice(-1) -> dt.tornado
   
   hline.dat <- data.frame(Outcome = c("Net Reproduction Number","Increase in fatalities"),
                           value = dt.res %>% filter(Scenario==i, Parameter_set=="LSHTM", Compliance=="Compliance", Mean_field_assumption=="Household",R_init==.8, TauB=="half") %>% select(value) %>% c())
   my_breaks <- function(x) { if (max(x) > 8) c(1, 2, 4, 8, 16, 32) else if (max(x) > 3) c(1,2,3,4,5,6,7,8) else if (max(x) > 2) c(1, 1.2, 1.6, 2.0, 2.4) else if (max(x) > 1.5) c(1, 1.2, 1.4, 1.6, 1.8) else if (max(x) > 1.1) c(0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4) else c(0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.2, 1.4, 1.6) }
   my_labs <- c("Community\ntransmission",
-               "Adherence",
+              "Adherence", 
+              "Density dependent\ntransmission",
                "Excluding households \n with adults > 70 ",
                "Current net\nreproduction number",
                "Household\nattack rate",
@@ -207,7 +219,7 @@ for(i in c("1","2","3","4","5","6","C2","C3")){
       filter(Scenario != "Excluding Elderly") -> dt.tornado
     
     my_labs = my_labs[-2]
-    my_labs = my_labs[-2]
+    my_labs = my_labs[-3]
   }
   
   dt.tornado %>%
@@ -221,7 +233,7 @@ for(i in c("1","2","3","4","5","6","C2","C3")){
     theme_light()+
     scale_x_discrete(labels = my_labs) +
     scale_y_log10(breaks = my_breaks)
-  ggsave(paste0("main_tornado_Scenario_",i,".pdf"), units = "cm", width = 17, height = 8.5)
+  ggsave(paste0("main_tornado_Scenario_",i,".pdf"), units = "cm", width = 17, height = 9.5)
 }
 
 
