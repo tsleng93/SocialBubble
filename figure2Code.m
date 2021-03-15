@@ -16,15 +16,17 @@ RelTrans = ones(1,9);
 %load('PaperHouseholdworkspace.mat');
 load('FullCensusHouseholdWorkspace.mat');
 
+transmissiontype = 'freq';
+
 
 for j = 1:Runs
     tic
     randnum = randi(length(H));
     
     
-    NewH1 = PruneMatrixFull(H, tauH(1), 'H',  Age, RelTrans, RelInf);
-    NewH2 = PruneMatrixFull(H, tauH(2), 'H',  Age, RelTrans, RelInf);
-    NewH3 = PruneMatrixFull(H, tauH(3), 'H',  Age, RelTrans, RelInf);
+    NewH1 = PruneMatrixFull(H, tauH(1), 'H',  Age, RelTrans, RelInf, transmissiontype);
+    NewH2 = PruneMatrixFull(H, tauH(2), 'H',  Age, RelTrans, RelInf, transmissiontype);
+    NewH3 = PruneMatrixFull(H, tauH(3), 'H',  Age, RelTrans, RelInf, transmissiontype);
    
     %For different SARs
     
@@ -59,12 +61,12 @@ for j = 1:Runs
       
     %Different scenarios for 20% SAR
     NewH = NewH2;
-    NewB1 = PruneMatrixFull(B1, tauB(2), 'B', Age, RelTrans, RelInf);
-    NewB2 = PruneMatrixFull(B2, tauB(2), 'B', Age, RelTrans, RelInf);
-    NewB3 = PruneMatrixFull(B3, tauB(2), 'B', Age, RelTrans, RelInf);
-    NewB4 = PruneMatrixFull(B4, tauB(2), 'B', Age, RelTrans, RelInf);
+    NewB1 = PruneMatrixFull(B1, tauB(2), 'B', Age, RelTrans, RelInf, transmissiontype);
+    NewB2 = PruneMatrixFull(B2, tauB(2), 'B', Age, RelTrans, RelInf, transmissiontype);
+    NewB3 = PruneMatrixFull(B3, tauB(2), 'B', Age, RelTrans, RelInf, transmissiontype);
+    NewB4 = PruneMatrixFull(B4, tauB(2), 'B', Age, RelTrans, RelInf, transmissiontype);
     NewB5 = NewB1 + NewB3;
-    NewB6 = PruneMatrixFull(B6, tauB(2), 'B', Age, RelTrans, RelInf);
+    NewB6 = PruneMatrixFull(B6, tauB(2), 'B', Age, RelTrans, RelInf, transmissiontype);
     NewBc2 = RewirePrunedMatrix(NewB6, 1, 'C2');
     NewBc3 = RewirePrunedMatrix(NewB6, 1, 'C3');
     
