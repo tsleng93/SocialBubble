@@ -1,4 +1,4 @@
-function [NewM, SAR] = PruneMatrixFull(M,tau, Type, A, RelTrans, RelInf)
+function [NewM, SAR] = PruneMatrixFull(M,tau, Type, A, RelTrans, RelInf, freqordens)
 
 
 %This function takes an adjacency matrix M and removes edges at a
@@ -11,7 +11,7 @@ function [NewM, SAR] = PruneMatrixFull(M,tau, Type, A, RelTrans, RelInf)
 %   - M is the adjacency matrix for the household or bubble contacts.
 %   - tau is the baseline transmission rate across a household or bubble 
 %   contact.
-%   - Type is a charecter which tells the function if M is a household
+%   - Type is a character which tells the function if M is a household
 %   ('H') adjacency matrix or a bubble ('B') adjacency matrix.
 %   - A is a vector which store the age group each individual in the
 %   population belongs to.
@@ -19,6 +19,8 @@ function [NewM, SAR] = PruneMatrixFull(M,tau, Type, A, RelTrans, RelInf)
 %   dependent on their age group.
 %   - RelInf scales the rate of transmission to an individual (i.e. their 
 %   rate of infection) dependent on their age group.
+%   - freqordens tells the function whether we are considering frequency or
+%   density dependent transmission
 
 %Output:
 %   - NewM is the adjacency matrix after it has been pruned.
@@ -28,7 +30,7 @@ function [NewM, SAR] = PruneMatrixFull(M,tau, Type, A, RelTrans, RelInf)
 %Note: M is a N x N matrix where N is the population size.
 
 %Authors: Trystan Leng, Connor White and Matt Keeling.
-%Last update 13/08/2020.
+%Last update 15/03/2021.
 
 for i = 1:length(RelInf)
     AInf(A==i) = RelInf(i);
@@ -39,16 +41,36 @@ end
 if Type == 'H'
    M = M - speye(length(M),length(M));
 end
+
+if freqordens == 'freq'
+    Rdenom = M;
+elseif freqordens == 'dens'
+    Rdenom = speye(length(M));
+end
+
     
 Morig = M;
 
 %Define rate matrix
-tempIJ1 = AInf.*(tau./sum(M));
+%for frequency dependent transmission
+%tempIJ1 = AInf.*(tau./sum(M));
+%for density dependent transmission
+%tempIJ1 = AInf.*tau;
+%With Rdenom (for either)
+tempIJ1 = AInf.*(tau./sum(Rdenom));
+
 tempIJ2 = ATrans;
 tempIJ1(isinf(tempIJ1)) = 0;
 
 tempJI1 = AInf.*tau;
-tempJI2 = ATrans./sum(M);
+%for frequency dependent transmission
+%tempJI2 = ATrans./sum(M);
+%for density dependent transmission
+%tempJI2 = ATrans;
+
+%With Rdenom (for either)
+tempJI2 = ATrans./sum(Rdenom);
+
 tempJI2(isinf(tempJI2)) = 0;
 
 
@@ -84,5 +106,3 @@ SAR = sum(sum(M))/sum(sum(Morig));
 if Type == 'H'
     M = M + speye(length(M),length(M));
 end
-
-NewM = M;
