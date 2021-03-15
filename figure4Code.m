@@ -15,10 +15,11 @@ RelTrans = ones(1,9);
 
 load('FullCensusHouseholdWorkspace.mat');
 
+transmissiontype = 'freq';
 
 [x,y] = find(B6);
 
-for j = 11:Runs
+for j = 1:Runs
   tic  
   for i = 1:21
         
@@ -29,10 +30,10 @@ for j = 11:Runs
         y2 = y(x > d*length(B6) & y > d*length(B6));
         Bs(x2,y2) = 0;
             
-        NewH = PruneMatrixFull(H, tauH, 'H',  Age, RelTrans, RelInf);
-        NewB1 = PruneMatrixFull(Bs, tauB(1), 'B', Age, RelTrans, RelInf);
-        NewB2 = PruneMatrixFull(Bs, tauB(2), 'B', Age, RelTrans, RelInf);
-        NewB3 = PruneMatrixFull(Bs, tauB(3), 'B', Age, RelTrans, RelInf);
+        NewH = PruneMatrixFull(H, tauH, 'H',  Age, RelTrans, RelInf, transmissiontype);
+        NewB1 = PruneMatrixFull(Bs, tauB(1), 'B', Age, RelTrans, RelInf, transmissiontype);
+        NewB2 = PruneMatrixFull(Bs, tauB(2), 'B', Age, RelTrans, RelInf, transmissiontype);
+        NewB3 = PruneMatrixFull(Bs, tauB(3), 'B', Age, RelTrans, RelInf, transmissiontype);
                
         %tauB = tauH
         if j == 1
