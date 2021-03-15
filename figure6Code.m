@@ -50,8 +50,7 @@ B5 = B1+B3;
 %y terms refer to infecteds
 %Dy terms refer to Deaths
 
-[MultiGen1, MultiGen2] = MultiGenerationalHouseholds(Age, Position);
-
+transmissiontype = 'freq';
 
 for j = 3:Runs
    tic
@@ -60,13 +59,13 @@ for j = 3:Runs
    randnum = randi(length(H));
    
    %Prune Matrices
-   NewH = PruneMatrixFull(H, tauH(i), 'H',  Age, RelTrans, RelInf); 
-   NewB1 = PruneMatrixFull(B1, tauB(i), 'B', Age, RelTrans, RelInf);
-   NewB2 = PruneMatrixFull(B2, tauB(i), 'B', Age, RelTrans, RelInf);
-   NewB3 = PruneMatrixFull(B3, tauB(i), 'B', Age, RelTrans, RelInf);
-   NewB4 = PruneMatrixFull(B4, tauB(i), 'B', Age, RelTrans, RelInf);
+   NewH = PruneMatrixFull(H, tauH(i), 'H',  Age, RelTrans, RelInf, transmissiontype); 
+   NewB1 = PruneMatrixFull(B1, tauB(i), 'B', Age, RelTrans, RelInf, transmissiontype);
+   NewB2 = PruneMatrixFull(B2, tauB(i), 'B', Age, RelTrans, RelInf, transmissiontype);
+   NewB3 = PruneMatrixFull(B3, tauB(i), 'B', Age, RelTrans, RelInf, transmissiontype);
+   NewB4 = PruneMatrixFull(B4, tauB(i), 'B', Age, RelTrans, RelInf, transmissiontype);
    NewB5 = NewB1 + NewB3;
-   NewB6 = PruneMatrixFull(B6, tauB(i), 'B', Age, RelTrans, RelInf);
+   NewB6 = PruneMatrixFull(B6, tauB(i), 'B', Age, RelTrans, RelInf, transmissiontype);
    
    if j == 1
                
@@ -189,5 +188,4 @@ Table1.Scenario = ['Scenario 1'; 'Scenario 2'; 'Scenario 3'; 'Scenario 4'; 'Scen
 %Write file
 writetable(Table1, 'Fatality_increase_current.csv');
 %}
-
 
