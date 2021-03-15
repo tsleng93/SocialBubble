@@ -77,6 +77,7 @@ Cindiv = ones(1,length(C));
 
 
 Runs = 10;
+transmissiontype = 'freq';
 
 %Scenarios used for the paper
 i = 5;
@@ -95,19 +96,19 @@ end
 for j = 1:Runs
     tic
     %Scenario c1
-    [NewH, SAR] = PruneMatrixFull(H, tauH, 'H',  Age, RelTrans, RelInf);
+    [NewH, SAR] = PruneMatrixFull(H, tauH, 'H',  Age, RelTrans, RelInf, transmissiontype);
     SARs(j) = SAR;
     
     for k = 1:3
         randnum = randi(length(H));
      
         if k == 1        
-            NewB1 = PruneMatrixFull(B1, tauB, 'B',  Age, RelTrans, RelInf);
-            NewB2 = PruneMatrixFull(B2, tauB, 'B',  Age, RelTrans, RelInf);
-            NewB3 = PruneMatrixFull(B3, tauB, 'B',  Age, RelTrans, RelInf); 
+            NewB1 = PruneMatrixFull(B1, tauB, 'B',  Age, RelTrans, RelInf, transmissiontype);
+            NewB2 = PruneMatrixFull(B2, tauB, 'B',  Age, RelTrans, RelInf, transmissiontype);
+            NewB3 = PruneMatrixFull(B3, tauB, 'B',  Age, RelTrans, RelInf, transmissiontype); 
             %B5 sum done afterwards
-            NewB4 = PruneMatrixFull(B4, tauB, 'B',  Age, RelTrans, RelInf);
-            NewB6 = PruneMatrixFull(B6, tauB, 'B',  Age, RelTrans, RelInf);
+            NewB4 = PruneMatrixFull(B4, tauB, 'B',  Age, RelTrans, RelInf, transmissiontype);
+            NewB6 = PruneMatrixFull(B6, tauB, 'B',  Age, RelTrans, RelInf, transmissiontype);
      
         elseif k == 2
            NewB1 = RewirePrunedMatrix(NewB1, 1, 'C2');
@@ -193,3 +194,4 @@ Fig7Table(5,:) = [D5/Dc1, max(1 - D5(1)/D5(2), 0), max(1 - D5(1)/D5(3), 0)];
 Fig7Table(6,:) = [D6/Dc1, max(1 - D6(1)/D6(2), 0), max(1 - D6(1)/D6(3), 0)];
 
 bar([Fig7Table(:, 4:5)])
+
