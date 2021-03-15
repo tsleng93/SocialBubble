@@ -34,6 +34,8 @@ eps = [epsLS1 epsLS1 epsLS1 epsLS2 epsLS3 epsWar epsWar epsWar epsLS4 epsLS1];
 
 load('FullCensusHouseholdWorkspace.mat');
 
+transmissiontype = 'freq';
+
 for k = 1:9
     DeathPropAge(Age == k) = Death_Prop(k);
 end
@@ -47,17 +49,17 @@ RelTrans = RelTransM(i,:);
 eps = 0.9 + 0.05*(0:20);
 
 
-for j = 11:Runs
+for j = 1:Runs
 
     tic
     %Prune Matrices
-    NewH = PruneMatrixFull(H, tauH(5), 'H',  Age, RelTrans, RelInf);
-    NewB1 = PruneMatrixFull(B1, tauB(5), 'B', Age, RelTrans, RelInf);    
-    NewB2 = PruneMatrixFull(B2, tauB(5), 'B', Age, RelTrans, RelInf);
-    NewB3 = PruneMatrixFull(B3, tauB(5), 'B', Age, RelTrans, RelInf);          
-    NewB4 = PruneMatrixFull(B4, tauB(5), 'B', Age, RelTrans, RelInf);  
+    NewH = PruneMatrixFull(H, tauH(5), 'H',  Age, RelTrans, RelInf, transmissiontype);
+    NewB1 = PruneMatrixFull(B1, tauB(5), 'B', Age, RelTrans, RelInf, transmissiontype);    
+    NewB2 = PruneMatrixFull(B2, tauB(5), 'B', Age, RelTrans, RelInf, transmissiontype);
+    NewB3 = PruneMatrixFull(B3, tauB(5), 'B', Age, RelTrans, RelInf, transmissiontype);          
+    NewB4 = PruneMatrixFull(B4, tauB(5), 'B', Age, RelTrans, RelInf, transmissiontype);  
     NewB5 = NewB1+NewB3;
-    NewB6 = PruneMatrixFull(B6, tauB(5), 'B', Age, RelTrans, RelInf);  
+    NewB6 = PruneMatrixFull(B6, tauB(5), 'B', Age, RelTrans, RelInf, transmissiontype);  
     NewBc2 = RewirePrunedMatrix(NewB6, 1, 'C2');
     NewBc3 = RewirePrunedMatrix(NewB6, 1, 'C3');
    
