@@ -106,3 +106,5 @@ SAR = sum(sum(M))/sum(sum(Morig));
 if Type == 'H'
     M = M + speye(length(M),length(M));
 end
+
+NewM = M;
